@@ -30,4 +30,10 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  extra_css: ["_static/custom.css"]
+  extra_js:
+    - "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
 
+sphinx:
+  extra_extensions:
+    - sphinx_exercise

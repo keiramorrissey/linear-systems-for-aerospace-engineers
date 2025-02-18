@@ -4,7 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-# - file: markdown
-# - file: notebooks
-# - file: markdown-notebooks
 - file: 01-introduction
+- file: 02-LTI-systems
+- file: 03-laplace

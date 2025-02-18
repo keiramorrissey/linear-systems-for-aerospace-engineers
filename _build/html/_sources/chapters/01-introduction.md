@@ -54,31 +54,15 @@ There are also inputs into the system whose values is not determined by a user, 
 Now, notice that the values of the state evolve over time. In fact, at time $t$, the rate of change of the state $\dot{\mathbf{x}}(t)$ depends on the current state $\mathbf{x}(t)$, control $\mathbf{u}(t)$, and disturbance $\mathbf{d}(t)$.
 As such, we can describe the time evolution of the state as  *first-order* ordinary differential equation where $f$ is a function describing the **dynamics** of the system:
 
-
-```{math}
-:label: eq-ch1-dynamics
-
-\dot{\mathbf{x}}(t) = f(\mathbf{x}(t), \mathbf{u}(t), \mathbf{d}(t), t).
-```
-
-<!-- {eq}`cs_14` -->
-
+$$ \dot{\mathbf{x}}(t) = f(\mathbf{x}(t), \mathbf{u}(t), \mathbf{d}(t), t). $$
 
 Collectively, we refer to the dynamics (i.e., first-order ODE), state, control, and disturbance as a **dynamical system**.
 
 Essentially, we have a first-order ODE. To compute the state at any time in the future given the current (initial) state, we can simply integrate the dynamics.
 
+$$ \mathbf{x}(t_f) = \mathbf{x}(t_0)  + \int_{t_0}^{t_f} f(\mathbf{x}(\tau), \mathbf{u}(\tau), \mathbf{d}(\tau), \tau) d\tau $$
 
-```{math}
-:label: eq-ch1-dynamics-solution
-\mathbf{x}(t_f) = \mathbf{x}(t_0)  + \int_{t_0}^{t_f} f(\mathbf{x}(\tau), \mathbf{u}(\tau), \mathbf{d}(\tau), \tau) d\tau
-```
-
-
-```{exercise}
-:label: ch1-dynamics
-List other examples of dynamical systems.
-```
+**Exercise:** Give examples of dynamical systems.
 
 ## Taxonomy of dynamical sytems
 We have just described what a dynamical system is, and we can see that dynamical systems are everywhere, from chemistry, biology, ecology, finance, engineering, etc. Let's now focus more on dynamical systems in the context of aerospace engineering. In aerospace engineering, we will come across many *physical* systems (e.g., rigid bodies, structures, aircraft) that are governed by *physics* where the motion of objects are due to forces and moments. In other words, we are interested in *mechanical dynamical systems* which are systems that are governed by Newton's 2nd law of motion, $\Sigma F=m\ddot{x}$.
@@ -88,15 +72,3 @@ We have just described what a dynamical system is, and we can see that dynamical
 Even though we are restricting our study to mechanical dynamical systems, there still can be many different classes of dynamical systems. Let's take a look at the following taxonomy.
 
 **TODO: Add diagram of taxonomy**
-
-- **Infinite vs finite dimensional**: This refers to the size of the state vector. If there are a finite number of quantities we care about, then this is obviously a finite dimensional problem, e.g., position and orientation of an aircraft. Alternatively, if we are considering, say fluid flow or a continuous beam structure, then there are *infinite* number of molecules that we want to model. The latter typically results in a partial differential equation, but practically, these infinite dimensional problems are often broken down into a finite, albeit many, components, turning an infinite-dimensional problem into a finite one. This is essentially what happens in computational fluid dynamics (CFD) and finite element analysis (FEA). In this course, we are interested in **finite-dimensional** dynamical systems.
-
-- **Linear vs nonlinear**: The dynamics function $f$ can be linear or nonlinear with respect to its input arguments. Linear dynamical systems are nice because they have nice and predictable properties, and we are able to leverage techniques from linear algebra. While nonlinear dynamics are harder to analyze and each type of nonlinear is unique. That is, techniques for a type of nonlinearity does not typically transfer to a different type of nonlinearity. In this course, we are interested in **linear** dynamical systems.
-
-- **Time-invariant vs time-varying**: Not only do the dynamics depend on state, control and disturbances, but it can also depend on time. Meaning the dynamics of the system may change depending on the time of day it is even though the initial conditions may be the same. For example, traffic flow is different during peak hours than it is during the middle of the night. Naturally, working with time-varying dynamics is more challenging. In this course, we are interested in **time-invariant** dynamical systems.
-
-The focus on **linear time-invariant (LTI) dynamical systems** may seem restrictive.
-In fact, one could argue that nothing in the real-world truly an LTI system. So why do we even bother studying LTI systems? Well, it's because we can actually solve them! With the power of linear algebra, we can actually model, analyze, and perform computation with LTI systems.
-
-It turns out that the theory developed for linear analysis works quite well in practice, even for analyzing and controlling systems with nonlinear dynamics. In particular, by computing the 1st-order Taylor expansion (i.e., the *linearization* of a nonlinear system at an operating point), it is possible to apply the tools of linear analysis to local neighborhoods of nonlinear systems. In fact, iteratively repeating this process in a *feedback loop* forms the basis of many modern control techniques.
-Similarly, the richness of linear system theory provides promising practical directions for structural design as well: by building systems that have structural properties that closely approximate linear systems, engineers can build systems that are easier to control.

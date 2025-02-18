@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Markdown Files &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
+    <title>Linear Time-Invariant Systems &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
   
   
   
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4d3af92" />
   
@@ -62,9 +62,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02-LTI-systems';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Laplace Transform" href="03-laplace.html" />
+    <link rel="prev" title="Introduction" href="01-introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +119,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -170,9 +172,9 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Time-Invariant Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
 </ul>
 
@@ -250,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F02-LTI-systems.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +282,7 @@
       
       
       
-      <li><a href="_sources/markdown.md" target="_blank"
+      <li><a href="_sources/02-LTI-systems.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +358,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Markdown Files</h1>
+    <h1>Linear Time-Invariant Systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -366,10 +368,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-myst">What is MyST?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-roles-and-directives">Sample Roles and Directives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-integral">Convolution integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-i-just-need-to-compute-the-convolution-to-solve-lti-systems">So I just need to compute the convolution to solve LTI systems?!</a></li>
 </ul>
             </nav>
         </div>
@@ -381,59 +381,83 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="markdown-files">
-<h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Link to this heading">#</a></h1>
-<p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
-in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
-called <strong>MyST Markdown</strong>.
-This is a simple file to help you get started and show off some syntax.</p>
-<section id="what-is-myst">
-<h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Link to this heading">#</a></h2>
-<p>MyST stands for “Markedly Structured Text”. It
-is a slight variation on a flavor of markdown called “CommonMark” markdown,
-with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
-in the Sphinx ecosystem.</p>
-<p>For more about MyST, see <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST Markdown Overview</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-time-invariant-systems">
+<h1>Linear Time-Invariant Systems<a class="headerlink" href="#linear-time-invariant-systems" title="Link to this heading">#</a></h1>
+<p>As discussed in Chapter 1, we are restricting our focus to finite-dimensional <strong>linear time-invariant (LTI)</strong> dynamical systems.
+To further simplify our dynamics model, let us consider the case without a disturbance input. For now, let the control input <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> represent some external input and this can be used to account of any inputs to the system either from a human, controller, or the environment.</p>
+<p>Additionally, while our definitions is applicable to multi-dimensional systems, let us for now consider one-dimension system with only a single control input.</p>
+<p>It is often helpful to view dynamical systems via an <em>input-output</em> map <span class="math notranslate nohighlight">\(T\{\cdot\}\)</span> that accepts an input signal <span class="math notranslate nohighlight">\(u(t)\)</span> and generates an output signal <span class="math notranslate nohighlight">\(x(t)\)</span>, where <span class="math notranslate nohighlight">\(t \in \mathbb{R}_{\geq 0}\)</span> is the time index. For example, we can apply some force to a mass attached to a spring for a 5 seconds and measure how much distance the mass displaces over the next 10 seconds.
+Pictorially, we can represent this input-output relationship via a block diagram.</p>
+<p>(TODO: add block diagram figure)</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (LTI systems)</p>
+<p>A <strong>linear, time-invariant (LTI) system</strong> <span class="math notranslate nohighlight">\(T\{\cdot\}\)</span> is an input-output mapping that has the following properties:</p>
+<ul class="simple">
+<li><p><strong>Homogeneity.</strong> Let <span class="math notranslate nohighlight">\(x(t)\)</span> be the system response to input <span class="math notranslate nohighlight">\(u(t)\)</span>: <span class="math notranslate nohighlight">\(x(t) = T\{u(t)\}\)</span>. Then <span class="math notranslate nohighlight">\(\alpha u(t) \rightarrow \alpha x(t) ,\, \alpha \in \mathbb{R}\)</span>. Equivalently, <span class="math notranslate nohighlight">\(T\{\alpha u(t)\} = \alpha x(t)\)</span>. This means scaling the input by <span class="math notranslate nohighlight">\(\alpha\)</span> will scale the output by <span class="math notranslate nohighlight">\(\alpha\)</span> as well.</p></li>
+<li><p><strong>Superposition.</strong> Let <span class="math notranslate nohighlight">\(x_{1}(t)\)</span> and <span class="math notranslate nohighlight">\(x_{2}(t)\)</span> be the responses to <span class="math notranslate nohighlight">\(u_{1}(t)\)</span>, <span class="math notranslate nohighlight">\(u_{2}(t)\)</span> respectively. Then <span class="math notranslate nohighlight">\(u_{1}(t) + u_{2}(t) \rightarrow x_{1}(t) + x_{2}(t)\)</span>. Equivalently: <span class="math notranslate nohighlight">\(T\{u_{1}(t)\)</span> + <span class="math notranslate nohighlight">\(u_{2}(t)\} = x_{1}(t) + x_{2}(t)\)</span>. This means summing two inputs will output the sum of the corresponding outputs of each input.</p></li>
+<li><p><strong>Time-invariance.</strong> Let <span class="math notranslate nohighlight">\(x(t)\)</span> be the system response to input <span class="math notranslate nohighlight">\(u(t)\)</span>. Then <span class="math notranslate nohighlight">\(u(t - \tau) \rightarrow x(t - \tau) ,\, \tau \in \mathbb{R}\)</span>. Equivalently: <span class="math notranslate nohighlight">\(T\{u(t - \tau)\} = x(t - \tau)\)</span>. This means that delaying the input also delays the output and would have behaved exactly the same had there been not delay.</p></li>
+</ul>
+</div>
+<p><i class="fas fa-video"></i> Check out this <a class="reference external" href="https://www.youtube.com/watch?v=3eDDTFcSC_Y">Youtube video</a> by Brian Douglas which offers a really nice visualization as to why LTI properties are nice!</p>
+<section id="convolution-integral">
+<h2>Convolution integral<a class="headerlink" href="#convolution-integral" title="Link to this heading">#</a></h2>
+<p>We are interested in what the output <span class="math notranslate nohighlight">\(x(t)\)</span> of an LTI system is like given an input signal <span class="math notranslate nohighlight">\(u(t)\)</span>. Before we can write down what <span class="math notranslate nohighlight">\(x(t)\)</span> is as a function of <span class="math notranslate nohighlight">\(u(t)\)</span>, let us first consider the response of <span class="math notranslate nohighlight">\(x(t)\)</span> when <span class="math notranslate nohighlight">\(u(t)\)</span> is a “small tap” which can be represented by a Dirac delta function.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (Dirac delta function)</p>
+<p>The Dirac delta function, denoted as <span class="math notranslate nohighlight">\(\delta(t)\)</span>, is a mathematical construct that models an idealized impulse or “tap” at a specific point in time, typically <span class="math notranslate nohighlight">\(t = 0\)</span>. It is defined to be zero everywhere except at <span class="math notranslate nohighlight">\(t = 0\)</span>, where it is infinitely high in such a way that its integral over the entire real line is equal to one. In other words, <span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty} \delta(t) \, dt = 1\)</span>.</p>
+<p>The Dirac delta function is a generalized function, or distribution, rather than a regular function in the traditional sense. It is defined by how it acts under an integral, rather than by its value at individual points.</p>
+<p>The Dirac delta function is widely used in engineering and physics to represent instantaneous impulses and to analyze systems’ responses to such inputs.</p>
+</div>
+<p>If <span class="math notranslate nohighlight">\(u(t) = \delta(t)\)</span>, then let <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> denote the output response of an LTI due to an impulse input.</p>
+<p>(TODO: add figure)</p>
+<p>Now, consider what the response would be to the following scenarios:</p>
+<ul class="simple">
+<li><p>Doubled the magnitude of the input <span class="math notranslate nohighlight">\(u(t) = 2 \delta(t)\)</span>. By to the homogeneity property, the output would double, <span class="math notranslate nohighlight">\(2\tilde{x}(t)\)</span>.</p></li>
+<li><p>Delayed the input by <span class="math notranslate nohighlight">\(\tau\)</span>, <span class="math notranslate nohighlight">\(u(t) = \delta(t - \tau)\)</span>. By the time-invariance property, the output would be delayed by <span class="math notranslate nohighlight">\(\tau\)</span>, <span class="math notranslate nohighlight">\(\tilde{x}(t - \tau)\)</span>.</p></li>
+<li><p>Two taps at <span class="math notranslate nohighlight">\(t=0\)</span> and <span class="math notranslate nohighlight">\(t=\tau\)</span> were provided, <span class="math notranslate nohighlight">\(u(t) = \delta(t) + \delta(t - \tau)\)</span>. By the superposition property, the output would be <span class="math notranslate nohighlight">\(\tilde{x}(t) + \tilde{x}(t - \tau)\)</span>.</p></li>
+</ul>
+<p>Given this, now consider what would happen if we the input was <span class="math notranslate nohighlight">\(N\)</span> number of impulses with various magnitudes <span class="math notranslate nohighlight">\(u_k\)</span> and at different times <span class="math notranslate nohighlight">\(\tau_k\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ u(t) = \sum_{k=0}^N u_k \delta(t - \tau_k) \]</div>
+<p>Given the LTI properties, the output would be,</p>
+<div class="math notranslate nohighlight">
+\[ x(t) = \sum_{k=0}^N u_k \tilde{x}(t - \tau_k) \]</div>
+<p>Now, if instead of summation, let us consider an integral. Intuitively, we can represent a smooth input signal <span class="math notranslate nohighlight">\(u(t)\)</span> as the sum of many many many impulses of varying magnitudes all stacked up together.</p>
+<div class="math notranslate nohighlight">
+\[u(t) = \int_0^t u(\tau) \delta(t-\tau) d\tau\]</div>
+<p>Then passing this input signal into our LTI system,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+x(t) &amp;=&amp; T\{ u(t) \} \\
+    &amp;=&amp; T \left\{ \int_0^t u(\tau) \delta(t-\tau) d\tau \right\} \\
+    &amp;=&amp; \int_0^t u(\tau) T\{ \delta(t-\tau)\} d\tau\\
+    &amp;=&amp; \int_0^t u(\tau) \tilde{x}(t - \tau) d\tau\\
+    &amp;=&amp; u(t) * \tilde{x}(t)
+\end{eqnarray}
+\end{split}\]</div>
+<p>The operator <span class="math notranslate nohighlight">\(*\)</span> is known as the <strong>convolution</strong> operator. This derivation shows that the <em>impulse response</em> <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> of the LTI system completely characterizes its output behavior given any arbitrary input signal <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (Convolution)</p>
+<p>Given two functions <span class="math notranslate nohighlight">\(g(t)\)</span> and <span class="math notranslate nohighlight">\(h(t)\)</span>, the <strong>convolution</strong> is,</p>
+<div class="math notranslate nohighlight">
+\[ (g * h)(t) = g(t) * h(t) = \int_0^t g(t) h(t - \tau) d\tau\]</div>
+</div>
+<div class="exercise admonition" id="ch2-convolution-commutative">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span></p>
+<section id="exercise-content">
+<p>Show that the convolution operator is commutative, i.e., show that <span class="math notranslate nohighlight">\((g * h)(t) = (h * g)(t)\)</span>.</p>
 </section>
-<section id="sample-roles-and-directives">
-<h2>Sample Roles and Directives<a class="headerlink" href="#sample-roles-and-directives" title="Link to this heading">#</a></h2>
-<p>Roles and directives are two of the most powerful tools in Jupyter Book. They
-are like functions, but written in a markup language. They both
-serve a similar purpose, but <strong>roles are written in one line</strong>, whereas
-<strong>directives span many lines</strong>. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.</p>
-<p>Here is a “note” directive:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note</p>
 </div>
-<p>It will be rendered in a special box when you build your book.</p>
-<p>Here is an inline directive to refer to a document: <a class="reference internal" href="markdown-notebooks.html"><span class="doc">Notebooks with MyST Markdown</span></a>.</p>
+<p><strong>Remark.</strong> You may have come across the convolution operator in the context of machine learning or computer vision (i.e. <em>convolutional</em> neural networks (CNNs)”). Indeed, the principles behind CNNs come from LTI theory: they encode the fact that the neural network’s outputs to image inputs should be translation-invariant, i.e. a cat that has been moved 5 pixels to the right is still a cat.</p>
 </section>
-<section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Link to this heading">#</a></h2>
-<p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
-the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
-this: <span id="id1">[<a class="reference internal" href="#id3" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In International Conference on Cognitive Neuroscience. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.">HdHPK14</a>]</span>.</p>
-<p>Moreover, you can insert a bibliography into your page with this syntax:
-The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
-render properly.
-For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
-then the bibliography is inserted with:</p>
-<div class="docutils container" id="id2">
-<div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">HdHPK14</a><span class="fn-bracket">]</span></span>
-<p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In <em>International Conference on Cognitive Neuroscience</em>. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="learn-more">
-<h2>Learn more<a class="headerlink" href="#learn-more" title="Link to this heading">#</a></h2>
-<p>This is just a simple starter to get you started.
-You can learn a lot more at <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p>
+<section id="so-i-just-need-to-compute-the-convolution-to-solve-lti-systems">
+<h2>So I just need to compute the convolution to solve LTI systems?!<a class="headerlink" href="#so-i-just-need-to-compute-the-convolution-to-solve-lti-systems" title="Link to this heading">#</a></h2>
+<p>Suppose that we have an LTI system, and you knew what its impulse response was. Then to model how the system would respond to any input signal <span class="math notranslate nohighlight">\(u(t)\)</span>, all we need to to do is to compute the convolution integral, and then we are done.
+Well, computing the convolution can be hard. Even if we could do solve it (e.g., numerically), we would have to perform the computation every time for each different input <span class="math notranslate nohighlight">\(u(t)\)</span>, and additionally, we do not have much insight into what the response may look like before we start solving it.</p>
+<p>Ideally, we can avoid solving this somewhat nasty convolution integral, and be able to analyze and extract intrinsic properties of the system independent of the kinds of input we feed in.</p>
+<p>Thinking back to your calculus class, what did you do when you encountered a nasty integral? You tried to see if you could perform a <em>change-of-variables</em>! We will do this, but with a very special choice for a change of variable, and this is known as the Laplace Transform…to the next chapter!</p>
 </section>
 </section>
 
@@ -467,6 +491,24 @@ You can learn a lot more at <a class="reference external" href="https://jupyterb
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01-introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-laplace.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Laplace Transform</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -484,10 +526,8 @@ You can learn a lot more at <a class="reference external" href="https://jupyterb
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-myst">What is MyST?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-roles-and-directives">Sample Roles and Directives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution-integral">Convolution integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-i-just-need-to-compute-the-convolution-to-solve-lti-systems">So I just need to compute the convolution to solve LTI systems?!</a></li>
 </ul>
   </nav></div>
 

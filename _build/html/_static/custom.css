@@ -1,0 +1,22 @@
+.admonition.definition {
+    background-color: #f0f8ff;
+    border-left: 5px solid #1e90ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.admonition.example {
+    background-color: #f0fff0;
+    border-left: 5px solid #c0fa9b;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.exercise.example {
+    background-color: #f0fff0;
+    border-left: 5px solid #c0fa9b;
+    padding: 10px;
+    border-radius: 5px;
+}

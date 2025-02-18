@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Markdown Files &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
+    <title>The Laplace Transform &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
   
   
   
@@ -36,9 +36,9 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4d3af92" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d94ea023" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -62,9 +62,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-laplace';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Linear Time-Invariant Systems" href="02-LTI-systems.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -170,10 +171,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Laplace Transform</a></li>
 </ul>
 
     </div>
@@ -250,7 +251,7 @@
       
       
       
-      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F03-laplace.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +281,7 @@
       
       
       
-      <li><a href="_sources/markdown.md" target="_blank"
+      <li><a href="_sources/03-laplace.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -343,9 +344,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -356,22 +355,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Markdown Files</h1>
+    <h1>The Laplace Transform</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-myst">What is MyST?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-roles-and-directives">Sample Roles and Directives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -381,60 +369,53 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="markdown-files">
-<h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Link to this heading">#</a></h1>
-<p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
-in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
-called <strong>MyST Markdown</strong>.
-This is a simple file to help you get started and show off some syntax.</p>
-<section id="what-is-myst">
-<h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Link to this heading">#</a></h2>
-<p>MyST stands for “Markedly Structured Text”. It
-is a slight variation on a flavor of markdown called “CommonMark” markdown,
-with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
-in the Sphinx ecosystem.</p>
-<p>For more about MyST, see <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST Markdown Overview</a>.</p>
-</section>
-<section id="sample-roles-and-directives">
-<h2>Sample Roles and Directives<a class="headerlink" href="#sample-roles-and-directives" title="Link to this heading">#</a></h2>
-<p>Roles and directives are two of the most powerful tools in Jupyter Book. They
-are like functions, but written in a markup language. They both
-serve a similar purpose, but <strong>roles are written in one line</strong>, whereas
-<strong>directives span many lines</strong>. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.</p>
-<p>Here is a “note” directive:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-laplace-transform">
+<h1>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Link to this heading">#</a></h1>
+<p>Although the convolution operator allows us to evaluate the response of an LTI system to any input, it requires computing an integral, which can be difficult for complicated inputs and impulse responses. Is there an alternative way to evaluate the response to an LTI system?</p>
+<p>This section introduces the <strong>Laplace transform</strong>, which applies a change of variables to the original system that reduces the complexity of evaluating the convolution of two functions. By taking the Laplace transform, we will go from the time domain to the <span class="math notranslate nohighlight">\(s\)</span>-domain. Later, we will see that it also serves as a useful tool for solving linear ordinary differential equations. We begin by introducing its formal definition.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (Laplace Transform)</p>
+<p>The <em>one-sided</em> <strong>Laplace transform</strong> <span class="math notranslate nohighlight">\(F(s)\)</span> of a function <span class="math notranslate nohighlight">\(f(t)\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch3-laplace">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-ch3-laplace" title="Link to this equation">#</a></span>\[F(s) = \mathcal{L}\{ f(t)\} := \int_0^{\infty} f(t)e^{-st}dt\]</div>
+<p>The <strong>inverse Laplace transform</strong> <span class="math notranslate nohighlight">\(f(t)\)</span> of a function <span class="math notranslate nohighlight">\(F(s)\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch3-inverse-laplace">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-ch3-inverse-laplace" title="Link to this equation">#</a></span>\[f(t) = \mathcal{L}^{-1} \{F(s)\} = \dfrac{1}{2\pi i} \lim_{T \rightarrow \infty} \int_{\gamma - iT}^{\gamma + iT} e^{st} F(s)ds\]</div>
 </div>
-<p>It will be rendered in a special box when you build your book.</p>
-<p>Here is an inline directive to refer to a document: <a class="reference internal" href="markdown-notebooks.html"><span class="doc">Notebooks with MyST Markdown</span></a>.</p>
-</section>
-<section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Link to this heading">#</a></h2>
-<p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
-the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
-this: <span id="id1">[<a class="reference internal" href="#id3" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In International Conference on Cognitive Neuroscience. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.">HdHPK14</a>]</span>.</p>
-<p>Moreover, you can insert a bibliography into your page with this syntax:
-The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
-render properly.
-For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
-then the bibliography is inserted with:</p>
-<div class="docutils container" id="id2">
-<div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">HdHPK14</a><span class="fn-bracket">]</span></span>
-<p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In <em>International Conference on Cognitive Neuroscience</em>. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.</p>
+<p>Practically, you will not need to explicitly compute the integral in <a class="reference internal" href="#equation-eq-ch3-laplace">(3)</a> or <a class="reference internal" href="#equation-eq-ch3-inverse-laplace">(4)</a>. The inverse Laplace transform is beyond the scope of this course, and requires a more in-depth understanding in complex analysis. Instead, we have tables describing the Laplace transform of commonly used functions, and we can use those tables freely without the need to redrive the expressions each time.</p>
+<p>While the Laplace transform may seem even more complicated, it actually will simplify a lot of the algebra and analysis. Specifically, the <strong>the Laplace transform of the convolution of two functions in time is the product of the respective Laplace transform</strong>.</p>
+<div class="definition admonition">
+<p class="admonition-title">Theorem (Laplace transform of convolution)</p>
+<p>The Laplace Transform of the convolution of two functions is given by</p>
+<div class="math notranslate nohighlight">
+\[ \mathcal{L} \{ (f \ast g ) (t) \}(s) = F(s) G(s) \]</div>
+<p>where <span class="math notranslate nohighlight">\(F(s) = \mathcal{L}\{f(t)\}\)</span>, <span class="math notranslate nohighlight">\(G(s) = \mathcal{L}\{g(t)\}\)</span>.</p>
 </div>
-</div>
-</div>
+<p>This means that taking a convolution in time, is just equivalent to <em>multiplying</em> their Laplace transform! We go from solving nasty integrals to just plain old simple algebraic manipulation!
+Ok, but after taking the Laplace transform and performing some algebraic manipulation, we need to perform the inverse Laplace transform to return back to the time domain. But this last step, we can use the Laplace tables to help us with it.</p>
+<p>Conceptually, we take a ODE problem defined in the time domain. Computing the output response <span class="math notranslate nohighlight">\(x(t)\)</span> given an input <span class="math notranslate nohighlight">\(u(t)\)</span> is tricky because of the convolution integral. Instead we take the Laplace transform and jump to the <span class="math notranslate nohighlight">\(s\)</span>-domain and work with quantities <span class="math notranslate nohighlight">\(X(s)\)</span> and <span class="math notranslate nohighlight">\(U(s)\)</span>. The convolution becomes a multiplication and we perform some algebraic manipulation to “massage the problem” until we are ready to return back to the time domain by taking the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span> to end up with <span class="math notranslate nohighlight">\(x(t)\)</span>, the quantity we want in the first place. A diagram illustrating these ideas is shown below.</p>
+<p>(TODO: add flow chart.)</p>
+<p><i class="fas fa-pencil-alt"></i> <strong>Example:</strong> Evaluate the Laplace Transform of <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+ \mathcal{L} \{ 1 \}(s) &amp;=&amp; \dfrac{1}{s}\\
+ \Rightarrow \mathcal{L} \{e^{-at}1\}(s) &amp;=&amp; \mathcal{L}\{ 1\}|_{(s-(-a))}= \dfrac{1}{s+a}
+ \end{eqnarray}
+ \end{split}\]</div>
+<div class="exercise example admonition" id="03-laplace-exercise-0">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
+<section id="exercise-content">
+<p>Evaluate the Laplace Transform of the ramp function <span class="math notranslate nohighlight">\(f(t) = t\)</span></p>
+<p>We show two ways of doing this. First, we note the integer transform pair:</p>
+<div class="math notranslate nohighlight">
+\[ \mathcal{L}\{t^{n}\} = \dfrac{n!}{s^{n+1}} \]</div>
+<p>Substituting for <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\( \mathcal{L}\{t\}(s) = \dfrac{1}{s^2}\)</span></p>
+<p>Alternatively, we can transform the original function and use the table rules for the time integral.</p>
+<p><span class="math notranslate nohighlight">\( \mathcal{L}\{t\} = \mathcal{L}\left\{\int_{0}^{t} 1 dt\right\} = \dfrac{1}{s} \mathcal{L}\{1\} = \left(\dfrac{1}{s}\right) \left(\dfrac{1}{s}\right) = \dfrac{1}{s^2} \)</span></p>
 </section>
-<section id="learn-more">
-<h2>Learn more<a class="headerlink" href="#learn-more" title="Link to this heading">#</a></h2>
-<p>This is just a simple starter to get you started.
-You can learn a lot more at <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p>
-</section>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,31 +448,21 @@ You can learn a lot more at <a class="reference external" href="https://jupyterb
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02-LTI-systems.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Linear Time-Invariant Systems</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-myst">What is MyST?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-roles-and-directives">Sample Roles and Directives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more">Learn more</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
