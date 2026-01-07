@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '08-modal-decomposition';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="State-space representation" href="07-state-space.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,14 +181,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05-system-properties.html">System response properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07-state-space.html">State-space representation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modal decomposition</a></li>
 </ul>
 
     </div>
@@ -242,7 +241,7 @@
       
       
       
-      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers" target="_blank"
+      <li><a href="https://github.com/UW-CTRL/linear-systems-for-aerospace-engineers" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -259,7 +258,7 @@
       
       
       
-      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F08-modal-decomposition.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UW-CTRL/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F08-modal-decomposition.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,20 +401,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modal-decomposition">
 <h1>Modal decomposition<a class="headerlink" href="#modal-decomposition" title="Permalink to this heading">#</a></h1>
-<p>In the previous chapter, the concept of state space representation and dynamics were introduced. As reminder, we are represent all relevant and necessary information about the system in the form of a <strong>state vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and describe how the the values of the state vector changes as a function of time and input <span class="math notranslate nohighlight">\(\mathbf{u}(t)\)</span> using a <strong>first-order ordinary differential equation</strong> <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = f(\mathbf{x}, \mathbf{u})\)</span>. Yet, computing the solution <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> given the dynamics and control signal (see <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>) in closed form is not straightforward given the integral and matrix exponential.</p>
+<p>In the previous chapter, the concept of state space representation and dynamics were introduced. As reminder, we are represent all relevant and necessary information about the system in the form of a <strong>state vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and describe how the the values of the state vector changes as a function of time and input <span class="math notranslate nohighlight">\(\mathbf{u}(t)\)</span> using a <strong>first-order ordinary differential equation</strong> <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = f(\mathbf{x}, \mathbf{u})\)</span>. Yet, computing the solution <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> given the dynamics and control signal (see <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">()</a>) in closed form is not straightforward given the integral and matrix exponential.</p>
 <p>To simplify the problem a little further, with the hopes of obtaining a closed-formed solution for describing the motion of the system, consider the case where there is no input <span class="math notranslate nohighlight">\(\mathbf{u}(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>. But instead, the system will move due to non-zero initial conditions. For instance, consider a beam, we are interested in how it may behave given some initial displacement.
 What we will discover is that the motion, while it may look complex at a first glance, is actually a result of a combination of simpler motions, each with a certain direction and frequency. In fact, given that we are concerned with <em>linear</em> time-invariant systems of multiple dimensions, these directions and frequences actually correspond to the eigenvectors and eigenvalues of the system respectively.</p>
 <section id="free-vibrations-undamped-state-space-approach">
 <h2>Free vibrations (Undamped): State-space approach<a class="headerlink" href="#free-vibrations-undamped-state-space-approach" title="Permalink to this heading">#</a></h2>
 <p>As mentioned above, we consider the case with zero input, and we are interested in how the system responds to non-zero initial conditions. The term <em>free vibrations</em> refer to this setting—the system is allowed to freely move (we will later see that the motion can be viewed as vibrations). Additionally, we will consider the undamped case, i.e., the damping term is zero.</p>
-<p>Recall from <a class="reference internal" href="07-state-space.html#equation-eq-ch7-general-2nd-order-dynamics">(9)</a>, a general second-order <span class="math notranslate nohighlight">\(n\)</span>-dimensional system can be written as,</p>
+<p>Recall from <a class="reference internal" href="07-state-space.html#equation-eq-ch7-general-2nd-order-dynamics">()</a>, a general second-order <span class="math notranslate nohighlight">\(n\)</span>-dimensional system can be written as,</p>
 <div class="math notranslate nohighlight">
 \[ M\ddot{\mathbf{x}} + C\dot{\mathbf{x}} + K{\mathbf{x}} = B\mathbf{u} , \quad \mathbf{x}\in\mathbb{R}^n, \: \mathbf{u} \in \mathbb{R}^m,\]</div>
 <p>With no damping and no control inputs, we end up with</p>
 <div class="math notranslate nohighlight">
 \[ M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \]</div>
 <p>Now, the goal is to determine an expression for <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> which describes how each of the variables (e.g., positions of each mass) behaves over time.
-To do this, we leverage the closed-form expression for state space dynamics <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>.
+To do this, we leverage the closed-form expression for state space dynamics <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">()</a>.
 Hence first, we need to convert our second order system above into the standard state space dynamics form (first order equation).</p>
 <p>Using state augmentation, we have</p>
 <div class="math notranslate nohighlight">
@@ -425,8 +424,8 @@ Hence first, we need to convert our second order system above into the standard 
 <p>The equation of motion <span class="math notranslate nohighlight">\( M \ddot{x} + K x = 0 \)</span> can be rearranged to <span class="math notranslate nohighlight">\(\ddot{x} = -M^{-1}Kx\)</span>.
 Thus the first order state space dynamics become</p>
 <div class="math notranslate nohighlight" id="equation-eq-ch8-undamped-state-space-dynamics">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-ch8-undamped-state-space-dynamics" title="Permalink to this equation">#</a></span>\[\begin{split}\dot{\mathbf{q}} = \begin{bmatrix} \dot{x} \\ \ddot{x} \end{bmatrix} = \underbrace{\begin{bmatrix} 0 &amp; I \\ -M^{-1}K &amp; 0 \end{bmatrix}}_{A \text{ matrix}}\begin{bmatrix} x \\ \dot{x} \end{bmatrix}\end{split}\]</div>
-<p>Using <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>, we see that the solution is,</p>
+<span class="eqno">()<a class="headerlink" href="#equation-eq-ch8-undamped-state-space-dynamics" title="Permalink to this equation">#</a></span>\[\begin{split}\dot{\mathbf{q}} = \begin{bmatrix} \dot{x} \\ \ddot{x} \end{bmatrix} = \underbrace{\begin{bmatrix} 0 &amp; I \\ -M^{-1}K &amp; 0 \end{bmatrix}}_{A \text{ matrix}}\begin{bmatrix} x \\ \dot{x} \end{bmatrix}\end{split}\]</div>
+<p>Using <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">()</a>, we see that the solution is,</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{q}(t) = e^{At}\mathbf{q}(0)\]</div>
 <p>But notice that the matrix exponential term is non-trivial. Sure, we can call a function and it will spit out a number, but it doesn’t quite provide any insight how <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> changes over time. For instance, is there any structure or predictable patterns? Perhaps if we analyzed <span class="math notranslate nohighlight">\(e^{At}\)</span> from a different perspective, or a different reference frame, the structure or pattern could become more obvious…</p>
@@ -487,7 +486,7 @@ Using the expression we have for <span class="math notranslate nohighlight">\(\m
 &amp;= \alpha_1e^{\lambda_1 t}\mathbf{v}_1 + \ldots + \alpha_{2n}e^{\lambda_{2n} t}\mathbf{v}_{2n}\\ 
 &amp;= \sum_{i=1}^{2n} \alpha_ie^{\lambda_i t}\mathbf{v}_i
 \end{split}\]</div>
-<p>So what can we conclude after all this? Well, the solution <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> is simply the linear combination of the eigenvalues where the coefficients <span class="math notranslate nohighlight">\(\alpha_ie^{\lambda_i t}\)</span> depend on the initial conditions projected into the eigenbasis and eigenvalue. So finding the solution to <span class="math notranslate nohighlight">\( M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \)</span> boils down to finding the eigenvalues and eigenvectors of the <span class="math notranslate nohighlight">\(A\)</span> matrix with size <span class="math notranslate nohighlight">\(2n \times 2n\)</span> from <a class="reference internal" href="#equation-eq-ch8-undamped-state-space-dynamics">(12)</a>.</p>
+<p>So what can we conclude after all this? Well, the solution <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> is simply the linear combination of the eigenvalues where the coefficients <span class="math notranslate nohighlight">\(\alpha_ie^{\lambda_i t}\)</span> depend on the initial conditions projected into the eigenbasis and eigenvalue. So finding the solution to <span class="math notranslate nohighlight">\( M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \)</span> boils down to finding the eigenvalues and eigenvectors of the <span class="math notranslate nohighlight">\(A\)</span> matrix with size <span class="math notranslate nohighlight">\(2n \times 2n\)</span> from <a class="reference internal" href="#equation-eq-ch8-undamped-state-space-dynamics">()</a>.</p>
 <p>So are we done? Is that as much structure we can possibly extract from the problem? Not quite. There are a few things to note.
 First, the original problem was to find <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, but now, with the state space augmentation, we are now solving for <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> which is twice is big as <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>. Furthermore, <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> consists of <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}(t)\)</span> which can alternatively be obtained by differentiating <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>. So essentially, by augmenting the state to conform to the standard state space dynamics formulation, we have made the problem slightly redundant.</p>
 <p>Let’s take a closer look at <span class="math notranslate nohighlight">\(A\)</span> and see if there anything we can do to hopefully simplfy the problem further.</p>
@@ -585,15 +584,6 @@ So now let’s summarize the steps needed to compute the solution, taking into t
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="07-state-space.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">State-space representation</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
