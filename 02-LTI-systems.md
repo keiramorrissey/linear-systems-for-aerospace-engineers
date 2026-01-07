@@ -3,13 +3,17 @@
 As discussed in Chapter 1, we are restricting our focus to finite-dimensional **linear time-invariant (LTI)** dynamical systems.
 To further simplify our dynamics model, let us consider the case without a disturbance input. For now, let the control input $\mathbf{u}$ represent some external input and this can be used to account of any inputs to the system either from a human, controller, or the environment.
 
-Additionally, while our definitions is applicable to multi-dimensional systems, let us for now consider one-dimension system with only a single control input.
+Additionally, while our definitions are applicable to multi-dimensional systems, let us for now consider systems single control input and we are concerned with observing one variable, which we refer to the *output* variable. We refer to such single input single output system as a **SISO** system.
 
 It is often helpful to view dynamical systems via an *input-output* map $T\{\cdot\}$ that accepts an input signal $u(t)$ and generates an output signal $x(t)$, where $t \in \mathbb{R}_{\geq 0}$ is the time index. For example, we can apply some force to a mass attached to a spring for a 5 seconds and measure how much distance the mass displaces over the next 10 seconds.
 Pictorially, we can represent this input-output relationship via a block diagram.
 
 (TODO: add block diagram figure)
 
+The dynamics of the system governs what this input-output relationship looks like. Naturally, if the dynamics are "complex" then this relationship between the input $u(t)$ and output $x(t)$ is also complex, which can make analyzing the controlling (i.e.,selecting input $u(t)$ to make the output $x(t)$ behave a certain way) the system challenging.
+However, if this relationship, or the input-output map $T\{\cdot\}$, satisfies a set of properties, then this can make analyzing and controlling the system tractable.
+
+Specifically, we consider systems that are **linear time-invariant**.
 
 :::{admonition} Definition (LTI systems)
 :class: definition

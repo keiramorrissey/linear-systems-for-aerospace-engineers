@@ -1,11 +1,12 @@
-# Welcome to your Jupyter Book
+# Introduction to Linear Systems for Aerospace Engineers
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
-
-Check out the content pages bundled with this sample book to see more.
 
 ```{tableofcontents}
 ```
+
+These notes are created, edited, and improved by the teaching staff of AA 312, 2024 onwards. The contents were based on previous offerings taught by Professor Behcet Acikmese.
+Contributors of these notes:
+- Karen Leung (Instructor)
+- Jason Xie (Winter 2024 Teaching assistant)
+- Jasper Matthe (Winter 2025 Teaching assistant)
+- Keira Morrissey (Winter 2026 Teaching assistant)

@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>The Laplace Transform &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
   
@@ -16,61 +16,56 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d94ea023" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03-laplace';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Transfer Function" href="04-transfer-function.html" />
     <link rel="prev" title="Linear Time-Invariant Systems" href="02-LTI-systems.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -95,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,24 +156,28 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
-    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Introduction to Linear Systems for Aerospace Engineers
                 </a>
             </li>
         </ul>
@@ -175,6 +185,10 @@
 <li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-system-properties.html">System response properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-state-space.html">State-space representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-modal-decomposition.html">Modal decomposition</a></li>
 </ul>
 
     </div>
@@ -183,14 +197,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -334,16 +343,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -370,20 +387,21 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-laplace-transform">
-<h1>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Link to this heading">#</a></h1>
+<h1>The Laplace Transform<a class="headerlink" href="#the-laplace-transform" title="Permalink to this heading">#</a></h1>
 <p>Although the convolution operator allows us to evaluate the response of an LTI system to any input, it requires computing an integral, which can be difficult for complicated inputs and impulse responses. Is there an alternative way to evaluate the response to an LTI system?</p>
 <p>This section introduces the <strong>Laplace transform</strong>, which applies a change of variables to the original system that reduces the complexity of evaluating the convolution of two functions. By taking the Laplace transform, we will go from the time domain to the <span class="math notranslate nohighlight">\(s\)</span>-domain. Later, we will see that it also serves as a useful tool for solving linear ordinary differential equations. We begin by introducing its formal definition.</p>
 <div class="definition admonition">
 <p class="admonition-title">Definition (Laplace Transform)</p>
 <p>The <em>one-sided</em> <strong>Laplace transform</strong> <span class="math notranslate nohighlight">\(F(s)\)</span> of a function <span class="math notranslate nohighlight">\(f(t)\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-ch3-laplace">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-ch3-laplace" title="Link to this equation">#</a></span>\[F(s) = \mathcal{L}\{ f(t)\} := \int_0^{\infty} f(t)e^{-st}dt\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-ch3-laplace" title="Permalink to this equation">#</a></span>\[F(s) = \mathcal{L}\{ f(t)\} := \int_0^{\infty} f(t)e^{-st}dt\]</div>
 <p>The <strong>inverse Laplace transform</strong> <span class="math notranslate nohighlight">\(f(t)\)</span> of a function <span class="math notranslate nohighlight">\(F(s)\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-ch3-inverse-laplace">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-ch3-inverse-laplace" title="Link to this equation">#</a></span>\[f(t) = \mathcal{L}^{-1} \{F(s)\} = \dfrac{1}{2\pi i} \lim_{T \rightarrow \infty} \int_{\gamma - iT}^{\gamma + iT} e^{st} F(s)ds\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-ch3-inverse-laplace" title="Permalink to this equation">#</a></span>\[f(t) = \mathcal{L}^{-1} \{F(s)\} = \dfrac{1}{2\pi i} \lim_{T \rightarrow \infty} \int_{\gamma - iT}^{\gamma + iT} e^{st} F(s)ds\]</div>
 </div>
-<p>Practically, you will not need to explicitly compute the integral in <a class="reference internal" href="#equation-eq-ch3-laplace">(3)</a> or <a class="reference internal" href="#equation-eq-ch3-inverse-laplace">(4)</a>. The inverse Laplace transform is beyond the scope of this course, and requires a more in-depth understanding in complex analysis. Instead, we have tables describing the Laplace transform of commonly used functions, and we can use those tables freely without the need to redrive the expressions each time.</p>
-<p>While the Laplace transform may seem even more complicated, it actually will simplify a lot of the algebra and analysis. Specifically, the <strong>the Laplace transform of the convolution of two functions in time is the product of the respective Laplace transform</strong>.</p>
+<p>Practically, you will not need to explicitly compute the integral in <a class="reference internal" href="#equation-eq-ch3-laplace">(3)</a> or <a class="reference internal" href="#equation-eq-ch3-inverse-laplace">(4)</a>. Diving into the details of the inverse Laplace transform is beyond the scope of this course as it requires a more in-depth understanding in complex analysis. Instead, we have tables describing the Laplace transform of commonly used functions, and we can use those tables freely without the need to redrive the expressions each time.</p>
+<p>While the Laplace transform may seem even more complicated, it actually will simplify a lot of the algebra and analysis. In fact, rather than working with convolution integrals, applying the Laplace transform results in an <em>algerbra</em> problem, things like solving quadratic equations, grouping terms, factorizing, completing the square, etc.
+This is becuase the <strong>the Laplace transform of the convolution of two functions in time is the product of the respective Laplace transform</strong>.</p>
 <div class="definition admonition">
 <p class="admonition-title">Theorem (Laplace transform of convolution)</p>
 <p>The Laplace Transform of the convolution of two functions is given by</p>
@@ -391,11 +409,15 @@
 \[ \mathcal{L} \{ (f \ast g ) (t) \}(s) = F(s) G(s) \]</div>
 <p>where <span class="math notranslate nohighlight">\(F(s) = \mathcal{L}\{f(t)\}\)</span>, <span class="math notranslate nohighlight">\(G(s) = \mathcal{L}\{g(t)\}\)</span>.</p>
 </div>
-<p>This means that taking a convolution in time, is just equivalent to <em>multiplying</em> their Laplace transform! We go from solving nasty integrals to just plain old simple algebraic manipulation!
+<p>This means that taking the Laplace transform of a convolution in time, is just equivalent to <em>multiplying</em> their Laplace transform! We go from solving nasty integrals to just plain old simple algebraic manipulation!
 Ok, but after taking the Laplace transform and performing some algebraic manipulation, we need to perform the inverse Laplace transform to return back to the time domain. But this last step, we can use the Laplace tables to help us with it.</p>
 <p>Conceptually, we take a ODE problem defined in the time domain. Computing the output response <span class="math notranslate nohighlight">\(x(t)\)</span> given an input <span class="math notranslate nohighlight">\(u(t)\)</span> is tricky because of the convolution integral. Instead we take the Laplace transform and jump to the <span class="math notranslate nohighlight">\(s\)</span>-domain and work with quantities <span class="math notranslate nohighlight">\(X(s)\)</span> and <span class="math notranslate nohighlight">\(U(s)\)</span>. The convolution becomes a multiplication and we perform some algebraic manipulation to “massage the problem” until we are ready to return back to the time domain by taking the inverse Laplace transform of <span class="math notranslate nohighlight">\(X(s)\)</span> to end up with <span class="math notranslate nohighlight">\(x(t)\)</span>, the quantity we want in the first place. A diagram illustrating these ideas is shown below.</p>
 <p>(TODO: add flow chart.)</p>
-<p><i class="fas fa-pencil-alt"></i> <strong>Example:</strong> Evaluate the Laplace Transform of <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span></p>
+<div class="exercise example admonition" id="ch3-laplace-exp">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span> (Example)</p>
+<section id="exercise-content">
+<p>Evaluate the Laplace Transform of <span class="math notranslate nohighlight">\(f(t) = e^{-at}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{eqnarray}
@@ -403,9 +425,11 @@ Ok, but after taking the Laplace transform and performing some algebraic manipul
  \Rightarrow \mathcal{L} \{e^{-at}1\}(s) &amp;=&amp; \mathcal{L}\{ 1\}|_{(s-(-a))}= \dfrac{1}{s+a}
  \end{eqnarray}
  \end{split}\]</div>
-<div class="exercise example admonition" id="03-laplace-exercise-0">
+</section>
+</div>
+<div class="exercise example admonition" id="ch3-laplace-ramp">
 
-<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 4 </span> (Example)</p>
 <section id="exercise-content">
 <p>Evaluate the Laplace Transform of the ramp function <span class="math notranslate nohighlight">\(f(t) = t\)</span></p>
 <p>We show two ways of doing this. First, we note the integer transform pair:</p>
@@ -414,6 +438,119 @@ Ok, but after taking the Laplace transform and performing some algebraic manipul
 <p>Substituting for <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\( \mathcal{L}\{t\}(s) = \dfrac{1}{s^2}\)</span></p>
 <p>Alternatively, we can transform the original function and use the table rules for the time integral.</p>
 <p><span class="math notranslate nohighlight">\( \mathcal{L}\{t\} = \mathcal{L}\left\{\int_{0}^{t} 1 dt\right\} = \dfrac{1}{s} \mathcal{L}\{1\} = \left(\dfrac{1}{s}\right) \left(\dfrac{1}{s}\right) = \dfrac{1}{s^2} \)</span></p>
+</section>
+</div>
+<div class="exercise example admonition" id="ch3-laplace-2nd-ramp-exp">
+
+<p class="admonition-title"><span class="caption-number">Exercise 5 </span> (Example)</p>
+<section id="exercise-content">
+<p>Evaluate <span class="math notranslate nohighlight">\( \mathcal{L}\{ te^{at} \}(s) \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+ \mathcal{L}\{ e^{at}f(t) \} &amp;=&amp; F(s-a) \\
+ \mathcal{L}\{t\}  &amp;=&amp; \dfrac{1}{s^2} \\
+\Rightarrow \mathcal{L}\{ e^{at} t \} &amp;=&amp; \dfrac{1}{(s-a)^2} \\
+ \end{eqnarray}
+ \end{split}\]</div>
+</section>
+</div>
+<div class="exercise admonition" id="ch3-laplace-2nd-derivative">
+
+<p class="admonition-title"><span class="caption-number">Exercise 6 </span> (Second derivative)</p>
+<section id="exercise-content">
+<p>Evaluate <span class="math notranslate nohighlight">\( \mathcal{L} \left\{ \dfrac{d^{2}f}{dt^2}\right\}\)</span></p>
+</section>
+</div>
+<div class="exercise admonition" id="ch3-laplace-trig">
+
+<p class="admonition-title"><span class="caption-number">Exercise 7 </span> (Sine and Cosine)</p>
+<section id="exercise-content">
+<p>Evaluate <span class="math notranslate nohighlight">\( \mathcal{L} \{ f(t) \}\)</span> for <span class="math notranslate nohighlight">\(f(t) = t \cos(\omega t)\)</span> and <span class="math notranslate nohighlight">\(f(t) = t\sin(\omega t)\)</span></p>
+</section>
+</div>
+<div class="exercise example admonition" id="ch3-laplace-partial-fractions">
+
+<p class="admonition-title"><span class="caption-number">Exercise 8 </span> (Partial fractions)</p>
+<section id="exercise-content">
+<p>Remember that <span class="math notranslate nohighlight">\(x(t)=e^{-at}\)</span> and its Laplace transform is <span class="math notranslate nohighlight">\(X(s)=\frac{1}{s+a}\)</span>.
+Now, take the inverse Laplace transform of the following: <span class="math notranslate nohighlight">\(X(s) = \frac{5}{s+3} + \frac{2}{s^2+16}\)</span></p>
+<p>Rewrite to match the format that we see in Laplace tables:</p>
+<p><span class="math notranslate nohighlight">\(X(s) = 5\frac{1}{s+3} + \frac{1}{2}\frac{4}{s^2+16}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+    X(s) &amp;= 5\frac{1}{s+3} + \frac{1}{2}\frac{4}{s^2+16}\\
+    \mathcal{L}^{-1}\{X(s)\} &amp;=  \mathcal{L}^{-1}\left\{5\frac{1}{s+3} + \frac{1}{2}\frac{4}{s^2+16}\right\} \\
+    &amp;=  5e^{-3t} + \frac{1}{2} \sin{4t}
+\end{align*}
+\end{split}\]</div>
+</section>
+</div>
+<div class="exercise example admonition" id="ch3-laplace-partial-fractions-complete-square">
+
+<p class="admonition-title"><span class="caption-number">Exercise 9 </span> (Partial fractions vs complete the square)</p>
+<section id="exercise-content">
+<p>Given <span class="math notranslate nohighlight">\(X(s)\)</span> in the Laplace domain, we can try the following:</p>
+<ol class="arabic simple">
+<li><p>rewrite it into partial fractions then take the inverse Laplace transform</p></li>
+<li><p>complete the square of the denominator and then take the inverse Laplace transform</p></li>
+</ol>
+<p>You will see that both (1) and (2) give easy-to-use forms of the function for taking the inverse Laplace transform.</p>
+<p>We have: <span class="math notranslate nohighlight">\( X(s) = \frac{7}{(s+2)(s+1)}\)</span></p>
+<p><strong>(1) Partial fraction method</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+ X(s) &amp;=&amp; \frac{7}{(s+2)(s+1)}\\
+      &amp;=&amp; \frac{A}{s+2} + \frac{B}{s+1}\\
+      &amp;=&amp;\frac{A(s+1)+B(s+2)}{(s+2)(s+1)}\\
+\Rightarrow  7 &amp;=&amp; A(s+1)+B(s+2)\\
+\Rightarrow &amp;&amp; B=7, A = -7\\
+\therefore X(s) &amp;=&amp; -\frac{7}{s+2} + \frac{7}{s+1}\\
+\Rightarrow x(t) &amp;=&amp; -7e^{-2t} + 7e^{-t}
+\end{eqnarray}
+\end{split}\]</div>
+<p><strong>(2) Complete the square method</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+(s+2)(s+1) &amp;= s^2 + 3s + 2 \\
+           &amp;= s^2 + 2 \cdot \frac{3}{2}s + 2 \\
+           &amp;= s^2 + 2 \cdot \frac{3}{2}s + \left( \frac{3}{2} \right)^2 - \left( \frac{3}{2} \right)^2 + 2 \\
+           &amp;= \left(s+\frac{3}{2}\right)^2 - \frac{1}{4}
+\end{align*}
+\end{split}\]</div>
+<p>then <span class="math notranslate nohighlight">\( X(s) = \frac{7}{\left(s+\frac{3}{2}\right)^2 - \frac{1}{4}}\)</span>. The Laplace transform of <span class="math notranslate nohighlight">\(\sinh(at)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\sinh(at)) = \frac{a}{s^2 - a^2}, \quad \text{for } |s| &gt; |a|.
+\]</div>
+<p>The shift property for (e^{at}) is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(e^{at}f(t)) = F(s - a),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F(s)\)</span> is the Laplace transform of <span class="math notranslate nohighlight">\(f(t)\)</span>.</p>
+<p>Let’s use these two properties to compute the Laplace transform:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) = \mathcal{L}^{-1} (X(s)) = \mathcal{L}^{-1} \left( \frac{7}{\left(s + \frac{3}{2}\right)^2 - \frac{1}{2}} \right) = \left( 14 \frac{\frac{1}{2}}{\left(s + \frac{3}{2}\right)^2 - \frac{1}{4}^2} \right) = 14 e^{-\frac{3}{2}t} \sinh\left(\frac{t}{2}\right)
+\]</div>
+<p>You can convince yourself with further trigonometric properties that:</p>
+<div class="math notranslate nohighlight">
+\[14 e^{-\frac{3}{2}t} \sinh\left(\frac{t}{2}\right) = -7e^{-2t} + 7e^{-t}\]</div>
+<p>So, as expected the partial fraction and complete the square methods give the same result.</p>
+</section>
+</div>
+<div class="exercise admonition" id="ch3-laplace-2nd-ODE">
+
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span> (2nd order ODE)</p>
+<section id="exercise-content">
+<ol class="arabic simple">
+<li><p>Solve initial value problem: <span class="math notranslate nohighlight">\(\ddot{x} + 5\dot{x} + 6x = 0\)</span> where <span class="math notranslate nohighlight">\(x(0)=1, \dot{x}=1\)</span>.</p></li>
+<li><p>Solve initial value problem: <span class="math notranslate nohighlight">\(\ddot{x} + 4\dot{x} + 5x = 0\)</span>, <span class="math notranslate nohighlight">\(x(0)=1\)</span>, <span class="math notranslate nohighlight">\(\dot{x}(0)=1\)</span></p></li>
+</ol>
 </section>
 </div>
 </section>
@@ -456,6 +593,15 @@ Ok, but after taking the Laplace transform and performing some algebraic manipul
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Linear Time-Invariant Systems</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="04-transfer-function.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Transfer Function</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -507,8 +653,8 @@ By Karen Leung, Jasper Matthe, Jason Xie
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

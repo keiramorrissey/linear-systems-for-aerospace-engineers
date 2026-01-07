@@ -7,3 +7,7 @@ chapters:
 - file: 01-introduction
 - file: 02-LTI-systems
 - file: 03-laplace
+- file: 04-transfer-function
+- file: 05-system-properties
+- file: 07-state-space
+- file: 08-modal-decomposition

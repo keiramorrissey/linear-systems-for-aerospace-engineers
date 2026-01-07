@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Introduction &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
   
@@ -16,62 +16,56 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c4d3af92" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '01-introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Linear Time-Invariant Systems" href="02-LTI-systems.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="Introduction to Linear Systems for Aerospace Engineers" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -87,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -96,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -103,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -120,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -151,24 +156,28 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
-    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Introduction to Linear Systems for Aerospace Engineers
                 </a>
             </li>
         </ul>
@@ -176,6 +185,10 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-system-properties.html">System response properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-state-space.html">State-space representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-modal-decomposition.html">Modal decomposition</a></li>
 </ul>
 
     </div>
@@ -184,14 +197,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -335,16 +343,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -383,14 +399,14 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>These course notes will introduce the mathematical tools and techniques to model and analyze linear time-invariant dynamical systems.
 The concepts covered in this course provide the basis for a rich history of techniques that are ubiquitous throughout science and engineering, including but not limited to aeronautics and astronautics, electrical and communications engineering, synthetic biology, seismology, finance, robotics, and data science / machine learning.</p>
 <p>In the context of aerospace engineering, linear analysis provides a powerful framework for modeling and analyzing dynamical systems (more on what dynamical systems are later).
 The ability to model systems and analyze their properties provide engineers with the insights and predictions on how a system may behave over time and how it may respond to external inputs (e.g., disturbances, vibrations). It is with these models and insights that enable engineers to design more performant and robust solutions. Without such models and analysis techniques, the presence of vibrations and other external disturbances can, for example, lead to structural failures in components and equipment, and render guidance and navigation systems unstable.</p>
 <p>We will begin with the definition of what a “model” means in an engineering context, and then work our way to the concept of a <em>linear time invariant dynamical system</em>.</p>
 <section id="what-is-a-model">
-<h2>What is a model?<a class="headerlink" href="#what-is-a-model" title="Link to this heading">#</a></h2>
+<h2>What is a model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this heading">#</a></h2>
 <p>Real-world phenomena are complex. From weather patterns, fluid flow, motion of an aircraft, heat flow, animal population, spread of diseases, etc. There are many factors that influence the behavior, all the way from the atomic level, to the gravitational pull of the moon. So how does one go about describing these phenomena and analyzing them?</p>
 <p>Well, we need a <strong>model</strong>! Simply put, a model is a mathematical representation of a phenomenon that you wish to describe.
 A model should be:</p>
@@ -415,7 +431,7 @@ A model should be:</p>
 This quote emphasizes the idea that while no model can perfectly capture the complexities of reality, a well-constructed model can still provide valuable insights and predictions.</p>
 </section>
 <section id="dynamical-systems">
-<h2>Dynamical systems<a class="headerlink" href="#dynamical-systems" title="Link to this heading">#</a></h2>
+<h2>Dynamical systems<a class="headerlink" href="#dynamical-systems" title="Permalink to this heading">#</a></h2>
 <p>So far, we have used the term “system” and “phenomena” somewhat interchangeably. Let’s get a little more concrete as to what we mean by that.
 Suppose there is a phenomenon we wish to model. By phenomenon, it could be things like the motion of an aircraft, the population of wolves and rabbits in a forest, the bending of an aircraft wing during flight. Within this phenomenon, there is a set of pertinent quantities, or variables, that describe the key properties. We refer to these pertinent quantities as the <strong>state</strong>, a minimal set of variables needed to describe the phenomenon at any given time <span class="math notranslate nohighlight">\(t\)</span>. The state is often denoted by a vector <span class="math notranslate nohighlight">\(\mathbf{x}(t)\in\mathbb{R}^n\)</span>.</p>
 <p>There are also quantities, or variables, that are not part of the state but still affects the behavior of the system.
@@ -426,12 +442,12 @@ There are also inputs into the system whose values is not determined by a user, 
 <p>Now, notice that the values of the state evolve over time. In fact, at time <span class="math notranslate nohighlight">\(t\)</span>, the rate of change of the state <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}(t)\)</span> depends on the current state <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, control <span class="math notranslate nohighlight">\(\mathbf{u}(t)\)</span>, and disturbance <span class="math notranslate nohighlight">\(\mathbf{d}(t)\)</span>.
 As such, we can describe the time evolution of the state as  <em>first-order</em> ordinary differential equation where <span class="math notranslate nohighlight">\(f\)</span> is a function describing the <strong>dynamics</strong> of the system:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ch1-dynamics">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-ch1-dynamics" title="Link to this equation">#</a></span>\[\dot{\mathbf{x}}(t) = f(\mathbf{x}(t), \mathbf{u}(t), \mathbf{d}(t), t).\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-ch1-dynamics" title="Permalink to this equation">#</a></span>\[\dot{\mathbf{x}}(t) = f(\mathbf{x}(t), \mathbf{u}(t), \mathbf{d}(t), t).\]</div>
 <!-- {eq}`cs_14` -->
 <p>Collectively, we refer to the dynamics (i.e., first-order ODE), state, control, and disturbance as a <strong>dynamical system</strong>.</p>
 <p>Essentially, we have a first-order ODE. To compute the state at any time in the future given the current (initial) state, we can simply integrate the dynamics.</p>
 <div class="math notranslate nohighlight" id="equation-eq-ch1-dynamics-solution">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-ch1-dynamics-solution" title="Link to this equation">#</a></span>\[\mathbf{x}(t_f) = \mathbf{x}(t_0)  + \int_{t_0}^{t_f} f(\mathbf{x}(\tau), \mathbf{u}(\tau), \mathbf{d}(\tau), \tau) d\tau\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-ch1-dynamics-solution" title="Permalink to this equation">#</a></span>\[\mathbf{x}(t_f) = \mathbf{x}(t_0)  + \int_{t_0}^{t_f} f(\mathbf{x}(\tau), \mathbf{u}(\tau), \mathbf{d}(\tau), \tau) d\tau\]</div>
 <div class="exercise admonition" id="ch1-dynamics">
 
 <p class="admonition-title"><span class="caption-number">Exercise 1 </span></p>
@@ -441,7 +457,7 @@ As such, we can describe the time evolution of the state as  <em>first-order</em
 </div>
 </section>
 <section id="taxonomy-of-dynamical-sytems">
-<h2>Taxonomy of dynamical sytems<a class="headerlink" href="#taxonomy-of-dynamical-sytems" title="Link to this heading">#</a></h2>
+<h2>Taxonomy of dynamical sytems<a class="headerlink" href="#taxonomy-of-dynamical-sytems" title="Permalink to this heading">#</a></h2>
 <p>We have just described what a dynamical system is, and we can see that dynamical systems are everywhere, from chemistry, biology, ecology, finance, engineering, etc. Let’s now focus more on dynamical systems in the context of aerospace engineering. In aerospace engineering, we will come across many <em>physical</em> systems (e.g., rigid bodies, structures, aircraft) that are governed by <em>physics</em> where the motion of objects are due to forces and moments. In other words, we are interested in <em>mechanical dynamical systems</em> which are systems that are governed by Newton’s 2nd law of motion, <span class="math notranslate nohighlight">\(\Sigma F=m\ddot{x}\)</span>.</p>
 <p>**Example: ** (TODO) Mass-spring-damper system.</p>
 <p>Even though we are restricting our study to mechanical dynamical systems, there still can be many different classes of dynamical systems. Let’s take a look at the following taxonomy.</p>
@@ -494,7 +510,7 @@ Similarly, the richness of linear system theory provides promising practical dir
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Introduction to Linear Systems for Aerospace Engineers</p>
       </div>
     </a>
     <a class="right-next"
@@ -513,8 +529,7 @@ Similarly, the richness of linear system theory provides promising practical dir
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -574,8 +589,8 @@ By Karen Leung, Jasper Matthe, Jason Xie
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

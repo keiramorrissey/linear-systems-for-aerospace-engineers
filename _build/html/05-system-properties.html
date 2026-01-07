@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>System response properties &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-system-properties';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="State-space representation" href="07-state-space.html" />
+    <link rel="prev" title="The Transfer Function" href="04-transfer-function.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Linear Systems for Aerospace Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">System response properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-state-space.html">State-space representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-modal-decomposition.html">Modal decomposition</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F05-system-properties.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05-system-properties.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>System response properties</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-response">Transient response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-response">Steady-state response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="system-response-properties">
+<h1>System response properties<a class="headerlink" href="#system-response-properties" title="Permalink to this heading">#</a></h1>
+<p>The output response will be excited due to an input, such as an impulse or step. The nature of the excitation will depend on transfer function, specifically, the poles and zeros.
+This response can be decomposed the response into two parts: the transient response, and the steady-state response.</p>
+<p>Assuming the system is <em>stable</em> (more on this in a bit), let us introduce and describe the transient response and steady-state response.</p>
+<section id="transient-response">
+<h2>Transient response<a class="headerlink" href="#transient-response" title="Permalink to this heading">#</a></h2>
+<p>The transient response refers to the short-term response of the output; how it immediately responds to the input, such as how quickly it tracks the input, how much it overshoots, or much it oscillates.
+For general transfer functions, finding a closed form solution for the transient response can be difficult. One would solve for the time response of the output by taking the inverse Laplace transform, and then extract properties from that analytic expression.
+However, for second-order systems, key transient response properties can be immediately inferred by looking at the characteristic equation.</p>
+<p>Recall that a standard second-order system (from <a class="reference internal" href="04-transfer-function.html#equation-eq-ch4-msd">(5)</a>), is</p>
+<div class="math notranslate nohighlight">
+\[G(s) = K \frac{\omega_n^2}{s^2 + 2 \zeta \omega_n s + \omega_n^2}.\]</div>
+<p>Let us complete the square in the denominator,</p>
+<div class="math notranslate nohighlight">
+\[G(s) = K \frac{\omega_n^2}{(s + \sigma)^2 + \omega_n^2(1 - \zeta^2)}, \qquad \sigma = \zeta\omega_n.\]</div>
+<p>Let us consider the step response <span class="math notranslate nohighlight">\(U(s) = \frac{1}{s}\)</span>. Then we have
+<span class="math notranslate nohighlight">\(X(s) = \frac{1}{s}\frac{K\omega_n^2}{(s + \sigma)^2 + \omega_n^2(1 - \zeta^2)}\)</span></p>
+<p>Applying partial fractions, we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-step-response-time">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-5-step-response-time" title="Permalink to this equation">#</a></span>\[X(s) = K \left( 1 - e^{-\sigma t} \cos (\omega_n\sqrt{1 - \zeta^2}t) - \frac{\zeta}{\sqrt{1 - \zeta^2}} e^{-\sigma t} \sin(\omega_n\sqrt{1 - \zeta} t) \right)\]</div>
+<p>The step response is shown below for various values of <span class="math notranslate nohighlight">\(0 &lt; \zeta \leq 1\)</span>.</p>
+<p>TOOD: Add figure</p>
+<!-- Consider the step response for some value of $0 < \zeta \leq 1$.  -->
+<p>We can describe some key characteristics of the transient response.</p>
+<ul class="simple">
+<li><p><strong>Settling time <span class="math notranslate nohighlight">\(t_s\)</span>:</strong> The time it takes for the step response to reach <span class="math notranslate nohighlight">\(X\)</span>% of the final value, where <span class="math notranslate nohighlight">\(X\)</span> is usually 1 or 2. For a 1% settling time, we have <span class="math notranslate nohighlight">\(t_s \approx \frac{4.6}{\sigma}\)</span>. More generally, for <span class="math notranslate nohighlight">\(X\)</span>% settling time, <span class="math notranslate nohighlight">\(t_s = \frac{\ln\frac{X}{100}}{-\sigma}\)</span>.</p></li>
+<li><p><strong>Rise time <span class="math notranslate nohighlight">\(t_r\)</span>:</strong> The time it takes for the response to from <span class="math notranslate nohighlight">\(10\%\)</span> to <span class="math notranslate nohighlight">\(90\%\)</span> of the final value. One could find this value exactly by doing a lot of algebra on <a class="reference internal" href="#equation-eq-5-step-response-time">(7)</a> and computing the time for <span class="math notranslate nohighlight">\(0.1K\)</span> and <span class="math notranslate nohighlight">\(0.9K\)</span>. A <em>rough</em> estimate for rise time is <span class="math notranslate nohighlight">\(t_r \approx \frac{1.8}{\omega_n}\)</span>.</p></li>
+<li><p><strong>Peak time <span class="math notranslate nohighlight">\(t_p\)</span>:</strong> The time it takes for the response it reach its maximum value. Peak time can found by finding the first stationary point of <a class="reference internal" href="#equation-eq-5-step-response-time">(7)</a>. That is, take the derivative, set it zero, and find the smallest time <span class="math notranslate nohighlight">\(t\)</span> for the stationary points. The peak time has a nice closed-form solution <span class="math notranslate nohighlight">\(t_p = \frac{\pi}{\omega_n \sqrt{1 - \zeta^2}}\)</span></p></li>
+<li><p><strong>Maximum overshoot <span class="math notranslate nohighlight">\(M_p\)</span>:</strong> The magnitude of the system’s maximum
+value normalized to its final value (e.g. <span class="math notranslate nohighlight">\(M_p\)</span> = 0.3 indicates that the system’s maximum value exceeds its final value by 30%). Similar to peak time, this can be solved of analytically. The resulting closed-form expression is <span class="math notranslate nohighlight">\(M_p = e^{-\frac{\pi\zeta}{\sqrt{1 - \zeta^2}}}\)</span>.</p></li>
+</ul>
+<p>These properties describe the transient properties of a system’s response to a step input. When designing parameters or controllers for a system, you may want the response to have some constraints on, for example, the settling time, and/or maximum overshoot. Using the equations and constraining them based on design requirements, we can effectively constrain value for <span class="math notranslate nohighlight">\(\zeta\)</span> and <span class="math notranslate nohighlight">\(\omega_n\)</span>, or alternatively, the poles of the system. You will see more of this in your feedback controls course.</p>
+<div class="exercise admonition" id="impulse response derivation">
+
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (Impulse response)</p>
+<section id="exercise-content">
+<p>What is the impulse response? That is, find <span class="math notranslate nohighlight">\(x(t)\)</span> when <span class="math notranslate nohighlight">\(U(s) = 1\)</span>.</p>
+</section>
+</div>
+</section>
+<section id="steady-state-response">
+<h2>Steady-state response<a class="headerlink" href="#steady-state-response" title="Permalink to this heading">#</a></h2>
+<p>After the transient response and the system is settling to its final value, we want to determine what the final value that the system settles to. For a stable system, we can compute the final value of the system response by using the final value theorom.</p>
+<div class="math notranslate nohighlight">
+\[ x_\mathrm{ss} = \lim_{t\rightarrow \infty} x(t) = \lim_{s\rightarrow 0} s X(s)\]</div>
+<p>For example, if <span class="math notranslate nohighlight">\(G(s) = K \dfrac{\omega_n^2}{s^2 + 2\zeta \omega_n s + \omega_n^2}\)</span>, and <span class="math notranslate nohighlight">\(U(s) = \frac{1}{s}\)</span> (i.e., a step input), then, assuming response is stable, the final value is,</p>
+<div class="math notranslate nohighlight">
+\[ x_\mathrm{ss} = \lim_{s\rightarrow 0} s U(s)G(s) = \lim_{s\rightarrow 0} s \frac{1}{s} K \dfrac{\omega_n^2}{s^2 + 2\zeta \omega_n s + \omega_n^2} = K\]</div>
+</section>
+<section id="stability">
+<h2>Stability<a class="headerlink" href="#stability" title="Permalink to this heading">#</a></h2>
+<p>A key property engineers use to design mechanical systems is system stability. Stability characterizes whether as <span class="math notranslate nohighlight">\(t \rightarrow \infty\)</span> the system response will converge to some <em>equilibrium point</em>, or will cause the system to diverge, i.e., “shoot to infinity”.
+Understanding the stability of a system is crucial for understanding the response of mechanical systems to inputs and disturbances.</p>
+<p>While there are various notions of stability (e.g., asymptotic, Lyapunov, exponential), we will focus on bounded-input bounded-output (BIBO) stability in this course.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (BIBO stability)</p>
+<p>A system is <strong>bounded-input bounded output (BIBO) stable</strong> if the system response <span class="math notranslate nohighlight">\(x(t)\)</span> to any bounded input <span class="math notranslate nohighlight">\(u(t) \leq C\)</span> is bounded, i.e. there exists some constant <span class="math notranslate nohighlight">\(B\)</span> satisfying
+<span class="math notranslate nohighlight">\( \lvert x(t) \rvert \leq B\)</span></p>
+</div>
+<p>For LTI systems, there is a simple check to determine whether it is BIBO stable.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (BIBO stability for LTI systems)</p>
+<p>An LTI system is BIBO stable if <em>all</em> of its poles satisfy <span class="math notranslate nohighlight">\(\mathrm{Re}\{p_{i}\} &lt; 0\)</span>.</p>
+<p>Recall that the poles of an LTI system are given by the roots of <span class="math notranslate nohighlight">\(D(s)\)</span>, or the solutions to <span class="math notranslate nohighlight">\(D(s) = 0\)</span>, where <span class="math notranslate nohighlight">\(D(s)\)</span> is the denominator of the transfer function <span class="math notranslate nohighlight">\( G(s) = \dfrac{N(s)}{D(s)}.\)</span></p>
+</div>
+<div class="exercise example admonition" id="05-system-properties-exercise-1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Example)</p>
+<section id="exercise-content">
+<p>Is the system characterized by <span class="math notranslate nohighlight">\(G(s) = \dfrac{1}{s+a}\)</span> stable for <span class="math notranslate nohighlight">\(a &gt; 0\)</span>?</p>
+<p>We observe that the poles of the system are given by <span class="math notranslate nohighlight">\(s + a = 0 \implies p = - a\)</span>. Since <span class="math notranslate nohighlight">\(\mathrm{Re}\{p\} &lt; 0\)</span>, the system is BIBO stable.</p>
+<p>Is the system characterized by <span class="math notranslate nohighlight">\(G(s) = \dfrac{1}{s} \dfrac{1}{s+a}\)</span> stable for <span class="math notranslate nohighlight">\(a &gt; 0\)</span>?</p>
+<p>We observe that the poles of the system are given by <span class="math notranslate nohighlight">\(s(s+a) = 0 \implies p = 0, -a\)</span>. Since <span class="math notranslate nohighlight">\(\mathrm{Re}\{p\} \nless 0\)</span>, the system is not BIBO stable.</p>
+<p>Is the system characterized by <span class="math notranslate nohighlight">\(G(s) = \dfrac{s}{s^{2} + \omega^{2}}\)</span> stable?</p>
+<p>We observe that the poles of the system are given by <span class="math notranslate nohighlight">\(s^{2} + \omega^{2} = 0 \implies p = -\pm i\omega\)</span> Since <span class="math notranslate nohighlight">\(\mathrm{Re}\{p\} \nless 0\)</span>, the system is not BIBO stable.</p>
+<p>Is the system characterized by <span class="math notranslate nohighlight">\(G(s) = \frac{(s-2)(s+5)}{(s^2 + 6s + 13)(s+4)(s-1)}\)</span> stable?</p>
+<p>We observe that the poles of the system are given by <span class="math notranslate nohighlight">\((s^2 + 6s + 13)(s+4)(s-1)=0.\)</span> We know that due to the <span class="math notranslate nohighlight">\((s-1)\)</span> term, one of the poles is <span class="math notranslate nohighlight">\(p=1\)</span>. Since <span class="math notranslate nohighlight">\(\mathrm{Re}\{p\} &gt; 0\)</span>, the system is not BIBO stable.</p>
+</section>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-transfer-function.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Transfer Function</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07-state-space.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">State-space representation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-response">Transient response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-response">Steady-state response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Karen Leung, Jasper Matthe, Jason Xie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

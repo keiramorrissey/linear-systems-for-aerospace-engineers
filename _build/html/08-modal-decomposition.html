@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Modal decomposition &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08-modal-decomposition';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="State-space representation" href="07-state-space.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Linear Systems for Aerospace Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-system-properties.html">System response properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-state-space.html">State-space representation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modal decomposition</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F08-modal-decomposition.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/08-modal-decomposition.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modal decomposition</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#free-vibrations-undamped-state-space-approach">Free vibrations (Undamped): State-space approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-a-clever-change-of-variables-eigen-decomposition">Try a clever change of variables: Eigen decomposition!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-derivation">Long derivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-approach">Practical approach</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modal-decomposition">
+<h1>Modal decomposition<a class="headerlink" href="#modal-decomposition" title="Permalink to this heading">#</a></h1>
+<p>In the previous chapter, the concept of state space representation and dynamics were introduced. As reminder, we are represent all relevant and necessary information about the system in the form of a <strong>state vector</strong> <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and describe how the the values of the state vector changes as a function of time and input <span class="math notranslate nohighlight">\(\mathbf{u}(t)\)</span> using a <strong>first-order ordinary differential equation</strong> <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = f(\mathbf{x}, \mathbf{u})\)</span>. Yet, computing the solution <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> given the dynamics and control signal (see <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>) in closed form is not straightforward given the integral and matrix exponential.</p>
+<p>To simplify the problem a little further, with the hopes of obtaining a closed-formed solution for describing the motion of the system, consider the case where there is no input <span class="math notranslate nohighlight">\(\mathbf{u}(t)=0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>. But instead, the system will move due to non-zero initial conditions. For instance, consider a beam, we are interested in how it may behave given some initial displacement.
+What we will discover is that the motion, while it may look complex at a first glance, is actually a result of a combination of simpler motions, each with a certain direction and frequency. In fact, given that we are concerned with <em>linear</em> time-invariant systems of multiple dimensions, these directions and frequences actually correspond to the eigenvectors and eigenvalues of the system respectively.</p>
+<section id="free-vibrations-undamped-state-space-approach">
+<h2>Free vibrations (Undamped): State-space approach<a class="headerlink" href="#free-vibrations-undamped-state-space-approach" title="Permalink to this heading">#</a></h2>
+<p>As mentioned above, we consider the case with zero input, and we are interested in how the system responds to non-zero initial conditions. The term <em>free vibrations</em> refer to this setting—the system is allowed to freely move (we will later see that the motion can be viewed as vibrations). Additionally, we will consider the undamped case, i.e., the damping term is zero.</p>
+<p>Recall from <a class="reference internal" href="07-state-space.html#equation-eq-ch7-general-2nd-order-dynamics">(9)</a>, a general second-order <span class="math notranslate nohighlight">\(n\)</span>-dimensional system can be written as,</p>
+<div class="math notranslate nohighlight">
+\[ M\ddot{\mathbf{x}} + C\dot{\mathbf{x}} + K{\mathbf{x}} = B\mathbf{u} , \quad \mathbf{x}\in\mathbb{R}^n, \: \mathbf{u} \in \mathbb{R}^m,\]</div>
+<p>With no damping and no control inputs, we end up with</p>
+<div class="math notranslate nohighlight">
+\[ M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \]</div>
+<p>Now, the goal is to determine an expression for <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> which describes how each of the variables (e.g., positions of each mass) behaves over time.
+To do this, we leverage the closed-form expression for state space dynamics <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>.
+Hence first, we need to convert our second order system above into the standard state space dynamics form (first order equation).</p>
+<p>Using state augmentation, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{q} = \begin{bmatrix} x \\ \dot{x} \end{bmatrix}, \qquad \dot{\mathbf{q}} = \begin{bmatrix} \dot{x} \\ \ddot{x} \end{bmatrix},  \quad \mathbf{q}\in\mathbb{R}^{2n}
+\end{split}\]</div>
+<p>The equation of motion <span class="math notranslate nohighlight">\( M \ddot{x} + K x = 0 \)</span> can be rearranged to <span class="math notranslate nohighlight">\(\ddot{x} = -M^{-1}Kx\)</span>.
+Thus the first order state space dynamics become</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch8-undamped-state-space-dynamics">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-ch8-undamped-state-space-dynamics" title="Permalink to this equation">#</a></span>\[\begin{split}\dot{\mathbf{q}} = \begin{bmatrix} \dot{x} \\ \ddot{x} \end{bmatrix} = \underbrace{\begin{bmatrix} 0 &amp; I \\ -M^{-1}K &amp; 0 \end{bmatrix}}_{A \text{ matrix}}\begin{bmatrix} x \\ \dot{x} \end{bmatrix}\end{split}\]</div>
+<p>Using <a class="reference internal" href="07-state-space.html#equation-eq-ch7-state-space-solution">(11)</a>, we see that the solution is,</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{q}(t) = e^{At}\mathbf{q}(0)\]</div>
+<p>But notice that the matrix exponential term is non-trivial. Sure, we can call a function and it will spit out a number, but it doesn’t quite provide any insight how <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> changes over time. For instance, is there any structure or predictable patterns? Perhaps if we analyzed <span class="math notranslate nohighlight">\(e^{At}\)</span> from a different perspective, or a different reference frame, the structure or pattern could become more obvious…</p>
+<section id="try-a-clever-change-of-variables-eigen-decomposition">
+<h3>Try a clever change of variables: Eigen decomposition!<a class="headerlink" href="#try-a-clever-change-of-variables-eigen-decomposition" title="Permalink to this heading">#</a></h3>
+<p>Assume that the matrix <span class="math notranslate nohighlight">\(A\)</span> is eigen decomposable, with eigenvectors and eigenvalues <span class="math notranslate nohighlight">\((\mathbf{v}_1, \lambda_1), (\mathbf{v}_2, \lambda_2), \ldots, (\mathbf{v}_{2n}, \lambda_{2n})\)</span>.
+Note that there are <span class="math notranslate nohighlight">\(2n\)</span> eigenvectors/values because since <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^n\)</span>,  <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{2n \times 2n}\)</span>.
+Then we have <span class="math notranslate nohighlight">\(A = VDV^{-1}\)</span> where <span class="math notranslate nohighlight">\(V = [\mathbf{v}_1,\ldots, \mathbf{v}_{2n}]\)</span> and eigenvalues <span class="math notranslate nohighlight">\(D = \text{diag}([\lambda_1, \ldots, \lambda_{2n}])\)</span>.</p>
+<p>Thus using this represention in our state space dynamics, we get,</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{\mathbf{q}} = \underbrace{A}_{V D V^{-1}} \mathbf{q} = 
+\underbrace{V}_{\text{transform back} \quad} 
+\underbrace{D}_{\text{scale in eigenbasis} \quad} 
+\underbrace{V^{-1} \mathbf{q}}_{\text{transform to eigenbasis}}
+\]</div>
+<p>The interpretation, reading from right to left, is that <span class="math notranslate nohighlight">\(V^{-1} \mathbf{q}\)</span> performs a change of basis on the state, from whatever basis <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> is defined in, to the eigenbasis. Let <span class="math notranslate nohighlight">\(\mathbf{z} = V^{-1} \mathbf{q}\)</span>.
+Now that we have <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>, which is <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> expressed in the eigenbasis, we need to “apply the dynamics”. But in the eigenbasis, this is equivalent multiplying <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> by <span class="math notranslate nohighlight">\(D\)</span>, i.e., scaling along each (eigen) basis vector by each diagonal entry (the eigenvalues). Essentially, we have <span class="math notranslate nohighlight">\(\dot{\mathbf{z}} = D\mathbf{z}\)</span>.
+Then finally, we want to project back into the original basis, which presumably is in a frame that is more natural to interpret (but many not be more mathematically convinient to work in).
+Thus the last step is to project <span class="math notranslate nohighlight">\(\dot{\mathbf{z}}\)</span> back to the original basis, <span class="math notranslate nohighlight">\(\dot{\mathbf{q}} = V\dot{\mathbf{z}}\)</span>.</p>
+<p>So hopefully by now, you are convinced that this eigen decomposition can be viewed as a <em>change-of-variable</em> and does not actually change the value of what <span class="math notranslate nohighlight">\(A\)</span> is.</p>
+<p>The eigen decomposition is also useful in computing matrix exponentials. Recall that</p>
+<div class="math notranslate nohighlight">
+\[ e^{At} = I + At + \frac{1}{2!}A^2t^2 + \frac{1}{3!}A^3t^3 + ... \]</div>
+<p>Using <span class="math notranslate nohighlight">\(A = VDV^{-1}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+e^{VDV^{-1}t} &amp;= I + VDV^{-1}t + \frac{1}{2!}(VDV^{-1})^2t^2 + \frac{1}{3!}(VDV^{-1})^3t^3 + ...\\ 
+&amp;= VV^{-1} + VDV^{-1}t + \frac{1}{2!}(VDV^{-1})(VDV^{-1})t^2 + \frac{1}{3!}(VDV^{-1})(VDV^{-1})(VDV^{-1})t^3 + ...\\ 
+&amp;= VV^{-1} + VDV^{-1}t + \frac{1}{2!}(VD^2V^{-1})t^2 \frac{1}{3!}(VD^3V^{-1})t^3 + ...\\ 
+&amp;= V \left(I + Dt + \frac{1}{2!}D^2t^2 + \frac{1}{3!}D^3t^3 + ... \right) V^{-1}\\
+&amp;= Ve^{Dt}V^{-1}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(D\)</span> is a diagonal matrix, we have</p>
+<div class="math notranslate nohighlight">
+\[ e^{Dt} = \text{diag} ([e^{\lambda_1 t}, e^{\lambda_2 t}, \ldots, e^{\lambda_{2n} t}]) \]</div>
+<p>So the solution can be written as</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{q}(t) = Ve^{Dt}V^{-1}\mathbf{q}(0)\]</div>
+<p>We will now interpret each of these operations (like above), from right to left.</p>
+<p>The first operation <span class="math notranslate nohighlight">\(V^{-1}\mathbf{q}(0)\)</span> projects the initial state to the eigenbasis. Mathematically, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{z}(0) = V^{-1}\mathbf{q}(0) = [\alpha_1, \ldots, \alpha_{2n}]^T\]</div>
+<p>In the next operation, <span class="math notranslate nohighlight">\(e^{Dt}\)</span> is applied, which is interpreted as computing the solution at time <span class="math notranslate nohighlight">\(t\)</span> but in the eigenbasis. Thus we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+e^{Dt}V^{-1}\mathbf{q}(0) &amp;= e^{Dt}\mathbf{z}(0)\\ 
+&amp;= e^{Dt}[\alpha_1, \ldots, \alpha_{2n}]^T \\ 
+&amp; = [\alpha_1e^{\lambda_1 t}, \ldots, \alpha_{2n}e^{\lambda_{2n} t}]\\ 
+&amp;= \mathbf{z}(t)
+\end{split}\]</div>
+<p>Finally, we project <span class="math notranslate nohighlight">\(\mathbf{z}(t)\)</span> back to the original basis, <span class="math notranslate nohighlight">\(\mathbf{q}(t) = V\mathbf{z}(t)\)</span>.
+Using the expression we have for <span class="math notranslate nohighlight">\(\mathbf{z}(t)\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{q}(t) &amp;= V\mathbf{z}(t)\\ 
+&amp;= V[\alpha_1e^{\lambda_1 t}, \ldots, \alpha_{2n}e^{\lambda_{2n} t}]\\ 
+&amp;= \alpha_1e^{\lambda_1 t}\mathbf{v}_1 + \ldots + \alpha_{2n}e^{\lambda_{2n} t}\mathbf{v}_{2n}\\ 
+&amp;= \sum_{i=1}^{2n} \alpha_ie^{\lambda_i t}\mathbf{v}_i
+\end{split}\]</div>
+<p>So what can we conclude after all this? Well, the solution <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> is simply the linear combination of the eigenvalues where the coefficients <span class="math notranslate nohighlight">\(\alpha_ie^{\lambda_i t}\)</span> depend on the initial conditions projected into the eigenbasis and eigenvalue. So finding the solution to <span class="math notranslate nohighlight">\( M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \)</span> boils down to finding the eigenvalues and eigenvectors of the <span class="math notranslate nohighlight">\(A\)</span> matrix with size <span class="math notranslate nohighlight">\(2n \times 2n\)</span> from <a class="reference internal" href="#equation-eq-ch8-undamped-state-space-dynamics">(12)</a>.</p>
+<p>So are we done? Is that as much structure we can possibly extract from the problem? Not quite. There are a few things to note.
+First, the original problem was to find <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, but now, with the state space augmentation, we are now solving for <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> which is twice is big as <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>. Furthermore, <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> consists of <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}(t)\)</span> which can alternatively be obtained by differentiating <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>. So essentially, by augmenting the state to conform to the standard state space dynamics formulation, we have made the problem slightly redundant.</p>
+<p>Let’s take a closer look at <span class="math notranslate nohighlight">\(A\)</span> and see if there anything we can do to hopefully simplfy the problem further.</p>
+</section>
+<section id="long-derivation">
+<h3>Long derivation<a class="headerlink" href="#long-derivation" title="Permalink to this heading">#</a></h3>
+<p>We have
+<span class="math notranslate nohighlight">\( A = \begin{bmatrix} 0 &amp; I \\ -M^{-1}K &amp; 0 \end{bmatrix}\)</span> and we wish to find the eigenvalue and vectors.
+Let <span class="math notranslate nohighlight">\((\lambda, \mathbf{v})\)</span> be an eigenvalue-vector pair. In particular, let’s divide <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> into two equal components, <span class="math notranslate nohighlight">\(\mathbf{v} = \begin{bmatrix} \mathbf{v}^{x} \\ \mathbf{v}^{\dot{x}} \end{bmatrix}\)</span>. Then the eigenpairs should satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix} 0 &amp; I \\ -M^{-1}K &amp; 0 \end{bmatrix}\begin{bmatrix} \mathbf{v}^{x} \\ \mathbf{v}^{\dot{x}} \end{bmatrix} = \lambda \begin{bmatrix} \mathbf{v}^{x} \\ \mathbf{v}^{\dot{x}} \end{bmatrix} \\ \\
+\implies \begin{matrix} \mathbf{v}^{\dot{x}} = \lambda \mathbf{v}^{x} \\ -M^{-1}K \mathbf{v}^{x} = \lambda \mathbf{v}^{\dot{x}} = \lambda^2 \mathbf{v}^{x} \end{matrix}
+\end{split}\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(\mu = -\lambda^2\)</span>, then we have a familiar looking eigenvalue problem at hand, <span class="math notranslate nohighlight">\(M^{-1}K \mathbf{v}^{x} = \mu \mathbf{v}^{x}\)</span>.
+So rather than solving the eigenvalue problem on <span class="math notranslate nohighlight">\(A\)</span> directly (a <span class="math notranslate nohighlight">\(2n \times 2n\)</span> matrix), we can solve the eigenvalue problem on <span class="math notranslate nohighlight">\(M^{-1}K\)</span> instead which is only a <span class="math notranslate nohighlight">\(n \times n\)</span> matrix.</p>
+<p>It turns out that for most physically meaningful cases, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(K\)</span> are positive definite, and this implies that <span class="math notranslate nohighlight">\(\mu &gt;0 \)</span>.
+This means that</p>
+<div class="math notranslate nohighlight">
+\[ \mu &gt;0 \implies \lambda^2 &lt;0 \implies \pm \lambda = \pm i\sqrt{\mu}\]</div>
+<p>So the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> are <em>purely imaginary</em>. We could then go ahead and compute the corresponding eigenvectors which again, would consist of imaginary components. Then we would plug these values into <span class="math notranslate nohighlight">\(\sum_{i=1}^{2n} \alpha_ie^{\lambda_i t}\mathbf{v}_i\)</span> and obtain our solution. But does this physically make sense? How can the motion of a real physical system contain imaginary numbers?! Well, let think a bit more about this result.</p>
+<ul class="simple">
+<li><p>We have just identified that the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are <em>purely imaginary</em>. Recall that the eigenvalues a state space dynamics correspond to the <em>poles</em> of the system. If the poles are purely imaginary, this corresponds to a system that is purely oscillatory, i.e., no damping. This is consistent with our problem where at the very beginning, we set damping to be zero. So in this regard, having purely imaginary eigenvalues make sense.</p></li>
+<li><p>The final solution for <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span> or <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> should not contain any imaginary components because it does not make any physical sense. Imaginary numbers are used more for mathematical convenience, but they do not actually exist for a real physical system. Note that the solution is of the form <span class="math notranslate nohighlight">\(\sum_{i=1}^{2n} \alpha_ie^{\lambda_i t}\mathbf{v}_i\)</span> and that anytime there is an imaginary number, either from the eigenvalue, vector, or coefficient, they come in conjugate pairs. It turns out that once you write out all the terms, you will find that all the imaginary parts will cancel out, leaving only real parts. If you do go through the details and find that the imaginary parts are not canceling out, it is likely that you have made an error along the way.</p></li>
+<li><p>Building upon the two points above, we make use of Euler’s formula <span class="math notranslate nohighlight">\(e^{ix} = \cos x + i\sin x\)</span>,  <span class="math notranslate nohighlight">\(e^{ix} + e^{-ix} = 2\cos x \)</span>, and <span class="math notranslate nohighlight">\(e^{ix} - e^{-ix}=2i\sin x\)</span> when simplifying our the summation . Trusting that all the imaginary terms will cancel out, we will find that we end up with a linear combination of <span class="math notranslate nohighlight">\(\sin(\omega_i t)\mathbf{v}_i\)</span> and <span class="math notranslate nohighlight">\(\cos(\omega_i t)\mathbf{v}_i\)</span> terms where <span class="math notranslate nohighlight">\(\omega_i = \sqrt{\mu}\)</span> which is interpreted as the <em>angular frequency</em> of the system.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{q}(t) = \sum_{i=1}^{n} (a_i\cos(\omega_i t) + b_i \sin(\omega_i t))\mathbf{v}_i \\ 
+\mathbf{x}(t) = \sum_{i=1}^{n} (a_i\cos(\omega_i t) + b_i \sin(\omega_i t))\mathbf{v}^{x}_i 
+\end{split}\]</div>
+<p>Note that the summation is now over <span class="math notranslate nohighlight">\(n\)</span> and not <span class="math notranslate nohighlight">\(2n\)</span>. The <span class="math notranslate nohighlight">\(2n\)</span> came from summing over the positive and negative eigenvalues, and after the canceling out of imaginary parts, it reduces to a summation over <span class="math notranslate nohighlight">\(n\)</span> but each term in the summation has a <span class="math notranslate nohighlight">\(\cos\)</span> and <span class="math notranslate nohighlight">\(\sin\)</span> term. The coefficients <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> result in the algebra manipulation of terms. The values of them can be computed based on initial conditions. More on that later.</p>
+<p><strong>Summarizing what we have just done so far</strong>:
+We had a free vibration (undamped) problem and using state space representation, we attempted to solve the problem using the state space dynamics solution.
+In doing so, we found that we needed to solve an eigenvalue problem.
+Looking a bit more closely at the structure of our <span class="math notranslate nohighlight">\(A\)</span> matrix from our state space dynamics, the eigenvalue problem could be broken down into a smaller eigenvalue problem, and that the eigenvalues are purely imaginary.
+With this in mind, and using Euler’s formula and trusting that the imaginary parts will cancel out, the final solution is of the form</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}(t) = \sum_{i=1}^{n} (a_i\cos(\omega_i t) + b_i \sin(\omega_i t))\mathbf{v}_i \]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are the solutions to the following eigenvalue problem,</p>
+<div class="math notranslate nohighlight">
+\[M^{-1}K \mathbf{v} = \omega^2 \mathbf{v} \]</div>
+<p>The eigenvectors are referred to as <strong>mode shapes</strong> or the <strong>modes</strong> of the system, while the eigenvalues are referred to as the  <strong>natural (angular) frequencies</strong> of the system.</p>
+</section>
+<section id="practical-approach">
+<h3>Practical approach<a class="headerlink" href="#practical-approach" title="Permalink to this heading">#</a></h3>
+<p>So that derivation above was somewhat long, and a little redundant in that the we are mainly interested in finding <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and not <span class="math notranslate nohighlight">\(\mathbf{q}(t)\)</span>.
+So now let’s summarize the steps needed to compute the solution, taking into the account all the insights we gained from the above derivation.</p>
+<p>We wish to solve the problem <span class="math notranslate nohighlight">\( M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0 \)</span>, with initial conditions <span class="math notranslate nohighlight">\(\mathbf{x}(0) = \mathbf{x}_0\)</span> and <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}(0) = \dot{\mathbf{x}}_0\)</span>.</p>
+<p>We “guess” that the solution is of the form <span class="math notranslate nohighlight">\(\mathbf{x}(t) = \alpha e^{-i\omega t}\mathbf{v}\)</span>.
+(Perhaps in your previous differential equations course, you were just told a similar thing, that you should just “guess” that the solution is of a particular form, and you just went along with it. Well, with the derivation above, you can see that the guess is not really a guess, but is in fact grounded in linear algebra and eigen decomposition!)</p>
+<p>We plug out “guess” back into the ODE,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ M\ddot{\mathbf{x}}  + K{\mathbf{x}} = 0\\ 
+  M(-\omega^2  \alpha e^{-i\omega t}\mathbf{v})  + K\alpha e^{-i\omega t}\mathbf{v} = 0\\ 
+  \alpha e^{-i\omega t}(-\omega^2 M + K)\mathbf{v} = 0
+\end{split}\]</div>
+<p>In order for the above equation to solve, we could have</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha = 0\)</span> or <span class="math notranslate nohighlight">\(\mathbf{v}=0\)</span>, but then our guess will be trivial and that does not get us anywhere.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-i\omega t} = 0\)</span>, but that never equals to zero.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\omega^2 M + K = 0\)</span>, but this is typically not possible since <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(K\)</span> are determined by the system properties.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07-state-space.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">State-space representation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#free-vibrations-undamped-state-space-approach">Free vibrations (Undamped): State-space approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-a-clever-change-of-variables-eigen-decomposition">Try a clever change of variables: Eigen decomposition!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-derivation">Long derivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-approach">Practical approach</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Karen Leung, Jasper Matthe, Jason Xie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

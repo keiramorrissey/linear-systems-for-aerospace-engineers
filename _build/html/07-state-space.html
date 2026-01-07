@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>State-space representation &#8212; Introduction to Linear Systems for Aerospace Engineers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07-state-space';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modal decomposition" href="08-modal-decomposition.html" />
+    <link rel="prev" title="System response properties" href="05-system-properties.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Introduction to Linear Systems for Aerospace Engineers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Linear Systems for Aerospace Engineers
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-LTI-systems.html">Linear Time-Invariant Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-laplace.html">The Laplace Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-transfer-function.html">The Transfer Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-system-properties.html">System response properties</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">State-space representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-modal-decomposition.html">Modal decomposition</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/karenl7/linear-systems-for-aerospace-engineers/issues/new?title=Issue%20on%20page%20%2F07-state-space.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/07-state-space.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>State-space representation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-space-dynamics">State-space dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-n-order-systems-into-a-first-order-system">Converting n-order systems into a first-order system</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="state-space-representation">
+<h1>State-space representation<a class="headerlink" href="#state-space-representation" title="Permalink to this heading">#</a></h1>
+<p>So far, we have been concerned with SISO systems, systems with single input and single output. What if there were multiple inputs that could influence the system and multiple outputs we are interested in keeping track of? Well first, we need to have some way to represent all the inputs and outputs in a concise manner and also describe how these quantities interact with each other.</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p>First, let us consider a more complicated mechanical system: two masses connected by parallel springs and dampers with an external forcing <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p><img alt="Two masses connected by parallel springs and dampers." src="_images/two_mass_damp_spring.png" /></p>
+<p>We define the origin of <span class="math notranslate nohighlight">\(x_{1}\)</span> and <span class="math notranslate nohighlight">\(x_{2}\)</span> as the positions of the masses when the springs are in their unforced states. We can draw the FBDs for both masses assuming no friction with the surface (we can thus leave out vertical forces).</p>
+<p><img alt="FBD for two masses connected by parallel springs and dampers." src="_images/two_mass_damp_spring_FBD.png" /></p>
+<p>The equation of motion of the first mass <span class="math notranslate nohighlight">\(m_{1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    m_{1} \ddot{x}_{1} &amp;= -F_{k1} - F_{b1} + F_{k2} + F_{b2} \\
+    &amp; = -k_{1}x_{1} - b_{1}\dot{x_{1}} + k_{2}(x_{2}-x_{1}) + b_{2}(\dot{x}_{2} - \dot{x}_{1})\\
+    \implies &amp; m_{1} \ddot{x_{1}} + k_{1}x_{1} + b_{1}\dot{x_{1}} - k_{2}(x_{2}-x_{1}) - b_{2}(\dot{x}_{2} - \dot{x}_{1}) = 0
+\end{split}\]</div>
+<p>The equation of motion of the second mass <span class="math notranslate nohighlight">\(m_{2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    m_{2} \ddot{x}_{2} &amp;= - F_{k2} - F_{b2} + u \\
+    &amp;= -k_{2}(x_{2}-x_{1}) - b_{2}(\dot{x_{2}} - \dot{x_{1}}) + u\\
+    \implies &amp; m_{2} \ddot{x}_{2} + k_{2}(x_{2}-x_{1}) + b_{2}(\dot{x}{2} - \dot{x}_{1}) = u
+\end{split}\]</div>
+<p>Applying the Laplace transform to the above equations of motion with zero initial conditions:</p>
+<div class="math notranslate nohighlight">
+\[m_{1}s^{2}X_{1}(s) + k_{1}X_{1} + b_{1}sX_{1} - k_{2}(X_{2} - X_{1}) - b_{2}s(X_{2} - X_{1}) = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[\implies X_{1} (m_{1}s^{2} + (b_{1} + b_{2}) s + (k_{1} + k_{2})) = X_{2} (b_{1}s + k_{2}) \]</div>
+<div class="math notranslate nohighlight">
+\[m_{2} s^{2} X_{2}(s) + k_{2} (X_{2} - X_{1}) + b_{2}s(X_{2} - X_{1}) = U \]</div>
+<p>We can substitute one of the above equations into the other to solve for <span class="math notranslate nohighlight">\(\dfrac{X_{1}}{U}\)</span> and <span class="math notranslate nohighlight">\(\dfrac{X_{2}}{U}\)</span>.</p>
+<p>How scalable is the above strategy for more complicated systems? For example, suppose we had 100 mass-spring dampers connected in parallel. Imagine going though the algebra like the one above 100 times!
+Is there another way to analyze linear systems with many components?</p>
+<p>Yes there is! We do this by essentially stacking all the variables into a vector <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, \ldots, x_n]^T\)</span>. We will refer to this vector as the <strong>state vector</strong>, which represents the minimal set of variables necessary to describe the system. Now that the variables are written as a vector, we can also similarly consider the first and second derivative of the state vector, <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = [\dot{x}_1, \ldots, \dot{x}_n]^T\)</span> and <span class="math notranslate nohighlight">\(\ddot{\mathbf{x}} = [\ddot{x}_1, \ldots, \ddot{x}_n]^T\)</span>.
+In doing so, we can now combine the two equations of motion into a single matrix-vector equation.</p>
+<p>Let’s start by rewriting the two equations in matrix form:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch7-two-msd-state-equation">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-ch7-two-msd-state-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\underbrace{
+    \begin{bmatrix}
+        m_{1} &amp; 0 \\ 0 &amp; m_{2}
+    \end{bmatrix}}_{M = \text{Mass matrix}}
+   \begin{bmatrix}
+    \ddot{x_{1}} \\ \ddot{x_{2}}
+   \end{bmatrix} +
+   \underbrace{
+   \begin{bmatrix}
+    b_{1} + b_{2} &amp; -b_{2} \\ -b_{2} &amp; b_{2}
+   \end{bmatrix}}_{C = \text{Damping matrix}}
+   \begin{bmatrix}
+    \dot{x_{1}} \\ \dot{x_{2}}
+   \end{bmatrix} +
+   \underbrace{
+   \begin{bmatrix}
+    k_{1} + k_{2} &amp; -k_{2} \\ -k_{2} &amp; k_{2}
+   \end{bmatrix}}_{K = \text{Stiffness matrix}}
+   \underbrace{
+   \begin{bmatrix}
+    x_{1} \\ x_{2}
+   \end{bmatrix}}_{x = \text{State}} = 
+   \underbrace{
+   \begin{bmatrix}
+       0 \\ 1
+   \end{bmatrix}}_{B = \text{Control matrix}} u \end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-ch7-general-2nd-order-dynamics">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-ch7-general-2nd-order-dynamics" title="Permalink to this equation">#</a></span>\[\implies M\ddot{\mathbf{x}} + C\dot{\mathbf{x}} + K{\mathbf{x}} = B\mathbf{u} \]</div>
+<p>Hmmmm, so it appears that the two equations of motion that were derived could actually be combined together to be written in a somewhat compact and simple form.</p>
+<div class="exercise admonition" id="ch7-n-chain-msd">
+
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span></p>
+<section id="exercise-content">
+<p>Try writing out the equation of motion for a chain of 3 and 4 MSD systems. Do you notice a patter forming? What would the equation for a 100-chain MSD system look like?</p>
+</section>
+</div>
+</section>
+<section id="state-space-dynamics">
+<h2>State-space dynamics<a class="headerlink" href="#state-space-dynamics" title="Permalink to this heading">#</a></h2>
+<p>Recall from Chapter 1 when we introduced the notion of <em>state</em> as a minimal list of quantities that fully describes a dynamical system. How the state changes over time is described by a <strong>first-order ordinary differential equation</strong> <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = f(\mathbf{x}, \mathbf{u})\)</span> where <span class="math notranslate nohighlight">\(f\)</span> is vector-valued function which takes in state and control as inputs, and the control <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is an external input into the system whose value can be chosen by, for example, a human or algorithm.
+While the dynamics function <span class="math notranslate nohighlight">\(f\)</span> can be generally complex and nonlinear, in this course, we are restricting our analysis to LTI systems as this class of system exhibits nice properties that make analysis and control synthesis tractable.
+Thus we define LTI state space dynamics, which can be viewed as a generalized representation to many of the MSD systems we have seen so far.</p>
+<div class="definition admonition">
+<p class="admonition-title">Definition (LTI state space dynamics)</p>
+<p>The state-space representation for a linear time-invariant dynamical system is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch7-state-space-dynamics">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-ch7-state-space-dynamics" title="Permalink to this equation">#</a></span>\[\begin{split}    \dot{\mathbf{x}} &amp;= A\mathbf{x} + B\mathbf{u} \\
+    \mathbf{y} &amp;= C\mathbf{x} + D\mathbf{u} \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{n}\)</span> is the <strong>state</strong> of the system, <span class="math notranslate nohighlight">\(u \in \mathbb{R}^{m}\)</span> is the system <strong>input</strong>, and <span class="math notranslate nohighlight">\(y \in \mathbb{R}^{p}\)</span> is the system <strong>output</strong>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is known as the <strong>system matrix</strong> (which governs the system’s passive dynamics)</p></li>
+<li><p><span class="math notranslate nohighlight">\(B \in \mathbb{R}^{n \times m}\)</span> is known as the <strong>control matrix</strong> (which governs the system dynamics with respect to the control input)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C \in \mathbb{R}^{p \times n}\)</span> is known as the <strong>output matrix</strong> (which governs the relationship between the state and the measured output)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D \in \mathbb{R}^{p \times m}\)</span> is known as the <strong>feedthrough matrix</strong> (which governs the relationship between the input and output; often this is 0)</p></li>
+</ul>
+</div>
+<p>We will now show how to obtain the solution for the state <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> from a first-principles approach. Once you understand how this solution is obtained, you can use it moving forward.</p>
+<p>Taking the Laplace transform of both sides, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+s X(s) - x_0 &amp;= A X(s) + B U(s)\\
+Y(s) &amp;= C X(s) + D U(s)
+\end{split}\]</div>
+<p>Rearrange the first equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(sI - A) X(s) = x_0 + B U(s)\\
+\implies X(s) = (sI - A)^{-1} B U(s) + (sI - A)^{-1} x_0
+\end{split}\]</div>
+<p>In the above, the first term is the response due to input and the second term is the response due to initial conditions.</p>
+<p>Substituting <span class="math notranslate nohighlight">\(X(s)\)</span> into the output equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y(s) = C X(s) + D U(s)\\
+Y(s) = C \left[ (sI - A)^{-1} B U(s) + (sI - A)^{-1} x_0 \right] + D U(s)
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\implies Y(s) = C (sI - A)^{-1} B U(s) + C (sI - A)^{-1} x_0 + D U(s)
+\]</div>
+<div class="definition admonition">
+<p class="admonition-title">Definition (Inverse Laplace of <span class="math notranslate nohighlight">\((sI - A)^{-1}\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}    (sI-A)^{-1} &amp;= \frac{1}{s} \left(I - \frac{A}{s}\right)^{-1}\\ 
+                &amp;= \frac{I}{s} + \frac{A}{s^2} + \frac{A^2}{s^3} + \ldots\\
+    \mathcal{L}^{-1}\lbrace (sI-A)^{-1} \rbrace &amp;= I + tA + \frac{(tA)^2}{s!} + \ldots\\
+    &amp; e^{At} \quad \text{(Matrix exponential)} \end{split}\]</div>
+</div>
+<p>As such, taking the inverse Laplace transform, we have,</p>
+<div class="math notranslate nohighlight" id="equation-eq-ch7-state-space-solution">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-ch7-state-space-solution" title="Permalink to this equation">#</a></span>\[\begin{split}\mathbf{x}(t) = \int_0^t e^{A(t-\tau)} B \mathbf{u}(\tau) d \tau + e^{A t} \mathbf{x}(0)\\ 
+\mathbf{y}(t)=\int_0^t Ce^{A(t-\tau)} B \mathbf{u}(\tau) d \tau + Ce^{A t} \mathbf{x}(0) + D\mathbf{u}(t)\\ \end{split}\]</div>
+<p>What have we shown? For any state space dynamics, the state (and output) at any time can be determined by the above equations which require knowledge of the system matrices, initial state, and control signal.</p>
+</section>
+<section id="converting-n-order-systems-into-a-first-order-system">
+<h2>Converting n-order systems into a first-order system<a class="headerlink" href="#converting-n-order-systems-into-a-first-order-system" title="Permalink to this heading">#</a></h2>
+<p>Notice that the state space dynamics are given as a <em>first-order</em> ODE. However, when are are deriving the equation of motion, we result in a <em>second-order</em> ODE. So how do we convert our second-order ODEs into state space dynamics?
+We do this via state augmentation. Note that for LTI systems, the ODE is of the form <span class="math notranslate nohighlight">\(a_nx^{(n)}(t) + a_{n-1}x^{(n-1)}(t) + \ldots a_1x^\prime(t) + a_0x(t) = 0\)</span>. This means that <span class="math notranslate nohighlight">\(x^{(n)}(t)\)</span> term is a linear combination of all the lower order terms. As such, we redefine our state to also include all the derivative terms up until the <span class="math notranslate nohighlight">\(n-1\)</span> derivative. In the case of the second order system we considered at the start of this chapter, we redefine the state,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{q} = \begin{bmatrix} x_{1} \\ x_{2} \\ \dot{x}_{1} \\ \dot{x}_{2} \end{bmatrix} , \quad \dot{\mathbf{q}} = \begin{bmatrix} \dot{x}_{1} \\ \dot{x}_{2} \\ \ddot{x}_{1} \\ \ddot{x}_{2} \end{bmatrix} \end{split}\]</div>
+<p>With this new state representation, considering the <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(K\)</span>, and <span class="math notranslate nohighlight">\(B\)</span> matrices defined in <a class="reference internal" href="#equation-eq-ch7-two-msd-state-equation">(8)</a>, we can rewrite the dynamics as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\dot{\mathbf{q}} = 
+\underbrace{\begin{bmatrix}
+0 &amp; I \\ -M^{-1}C &amp; -M^{-1}K
+\end{bmatrix}}_{A \text{ matrix}} + \underbrace{\begin{bmatrix}
+0 \\ -M^{-1}B 
+\end{bmatrix}}_{B \text{ matrix}} \mathbf{u}
+\end{split}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05-system-properties.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">System response properties</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08-modal-decomposition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modal decomposition</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-space-dynamics">State-space dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-n-order-systems-into-a-first-order-system">Converting n-order systems into a first-order system</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Karen Leung, Jasper Matthe, Jason Xie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
