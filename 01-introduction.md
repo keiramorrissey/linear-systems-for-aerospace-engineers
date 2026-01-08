@@ -2,7 +2,7 @@
 
 These course notes will introduce the mathematical tools and techniques to model and analyze linear time-invariant dynamical systems.
 The concepts covered in this course provide the basis for a rich history of techniques that are ubiquitous throughout science and engineering, including but not limited to aeronautics and astronautics, electrical and communications engineering, synthetic biology, seismology, finance, robotics, and data science / machine learning.
-edit!
+
 
 In the context of aerospace engineering, linear analysis provides a powerful framework for modeling and analyzing dynamical systems (more on what dynamical systems are later).
 The ability to model systems and analyze their properties provide engineers with the insights and predictions on how a system may behave over time and how it may respond to external inputs (e.g., disturbances, vibrations). It is with these models and insights that enable engineers to design more performant and robust solutions. Without such models and analysis techniques, the presence of vibrations and other external disturbances can, for example, lead to structural failures in components and equipment, and render guidance and navigation systems unstable.
