@@ -101,3 +101,9 @@ In fact, one could argue that nothing in the real-world truly an LTI system. So 
 
 It turns out that the theory developed for linear analysis works quite well in practice, even for analyzing and controlling systems with nonlinear dynamics. In particular, by computing the 1st-order Taylor expansion (i.e., the *linearization* of a nonlinear system at an operating point), it is possible to apply the tools of linear analysis to local neighborhoods of nonlinear systems. In fact, iteratively repeating this process in a *feedback loop* forms the basis of many modern control techniques.
 Similarly, the richness of linear system theory provides promising practical directions for structural design as well: by building systems that have structural properties that closely approximate linear systems, engineers can build systems that are easier to control.
+
+
+
+
+
+
