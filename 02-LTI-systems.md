@@ -1,17 +1,17 @@
 # Linear Time-Invariant Systems
 
 As discussed in Chapter 1, we are restricting our focus to finite-dimensional **linear time-invariant (LTI)** dynamical systems.
-To further simplify our dynamics model, let us consider the case without a disturbance input. For now, let the control input $\mathbf{u}$ represent some external input and this can be used to account of any inputs to the system either from a human, controller, or the environment.
+To further simplify our dynamics model, let us consider the case without a disturbance input. For now, let the control input $\mathbf{u}$ represent some external input. This can be used to account for any inputs to the system, including from a human, controller, or the environment.
 
-Additionally, while our definitions are applicable to multi-dimensional systems, let us for now consider systems single control input and we are concerned with observing one variable, which we refer to the *output* variable. We refer to such single input single output system as a **SISO** system.
+Additionally, while our definitions are applicable to multi-dimensional systems, let us for now consider systems with a single control input with one observable variable, which we refer to the *output* variable. We refer to such single input single output system as a **SISO** system.
 
-It is often helpful to view dynamical systems via an *input-output* map $T\{\cdot\}$ that accepts an input signal $u(t)$ and generates an output signal $x(t)$, where $t \in \mathbb{R}_{\geq 0}$ is the time index. For example, we can apply some force to a mass attached to a spring for a 5 seconds and measure how much distance the mass displaces over the next 10 seconds.
+It is often helpful to view dynamical systems via an *input-output* map $T\{\cdot\}$ that accepts an input signal $u(t)$ and generates an output signal $x(t)$, where $t \in \mathbb{R}_{\geq 0}$ is the time index. For example, we can apply some force to a mass attached to a spring for 5 seconds and measure how much distance the mass displaces over the next 10 seconds. In this example, the force input to the system would be represented as $u(t)$ and the distance the mass displaces over time would be represented as $x(t)$.
 Pictorially, we can represent this input-output relationship via a block diagram.
 
 (TODO: add block diagram figure)
 
-The dynamics of the system governs what this input-output relationship looks like. Naturally, if the dynamics are "complex" then this relationship between the input $u(t)$ and output $x(t)$ is also complex, which can make analyzing the controlling (i.e.,selecting input $u(t)$ to make the output $x(t)$ behave a certain way) the system challenging.
-However, if this relationship, or the input-output map $T\{\cdot\}$, satisfies a set of properties, then this can make analyzing and controlling the system tractable.
+The dynamics of the system govern what this input-output relationship looks like. Naturally, if the dynamics are "complex" then this relationship between the input $u(t)$ and output $x(t)$ is also complex, which can make analyzing the controlling of the system (i.e.,selecting input $u(t)$ to make the output $x(t)$ behave a certain way) challenging.
+However, if this relationship, or the input-output map $T\{\cdot\}$, satisfies a set of properties, than this can greatly simplify the analysis of the system.
 
 Specifically, we consider systems that are **linear time-invariant**.
 
@@ -20,7 +20,7 @@ Specifically, we consider systems that are **linear time-invariant**.
 
 A **linear, time-invariant (LTI) system** $T\{\cdot\}$ is an input-output mapping that has the following properties:
 - **Homogeneity.** Let $x(t)$ be the system response to input $u(t)$: $x(t) = T\{u(t)\}$. Then $\alpha u(t) \rightarrow \alpha x(t) ,\, \alpha \in \mathbb{R}$. Equivalently, $T\{\alpha u(t)\} = \alpha x(t)$. This means scaling the input by $\alpha$ will scale the output by $\alpha$ as well.
-- **Superposition.** Let $x_{1}(t)$ and $x_{2}(t)$ be the responses to $u_{1}(t)$, $u_{2}(t)$ respectively. Then $u_{1}(t) + u_{2}(t) \rightarrow x_{1}(t) + x_{2}(t)$. Equivalently: $T\{u_{1}(t)$ + $u_{2}(t)\} = x_{1}(t) + x_{2}(t)$. This means summing two inputs will output the sum of the corresponding outputs of each input.
+- **Superposition.** Let $x_{1}(t)$ and $x_{2}(t)$ be the responses to $u_{1}(t)$, $u_{2}(t)$ respectively. Then ${u_{1}(t) + u_{2}(t) \rightarrow x_{1}(t) + x_{2}(t)$. Equivalently: $T\{u_{1}(t)$ + $u_{2}(t)\} = x_{1}(t) + x_{2}(t)$. This means summing two inputs will output the sum of the corresponding outputs of each input.
 - **Time-invariance.** Let $x(t)$ be the system response to input $u(t)$. Then $u(t - \tau) \rightarrow x(t - \tau) ,\, \tau \in \mathbb{R}$. Equivalently: $T\{u(t - \tau)\} = x(t - \tau)$. This means that delaying the input also delays the output and would have behaved exactly the same had there been not delay.
 :::
 
@@ -31,7 +31,7 @@ A **linear, time-invariant (LTI) system** $T\{\cdot\}$ is an input-output mappin
 
 ## Convolution integral
 
-We are interested in what the output $x(t)$ of an LTI system is like given an input signal $u(t)$. Before we can write down what $x(t)$ is as a function of $u(t)$, let us first consider the response of $x(t)$ when $u(t)$ is a "small tap" which can be represented by a Dirac delta function.
+We are interested in what the output $x(t)$ of an LTI system is given an input signal $u(t)$. Before we can write down what $x(t)$ is as a function of $u(t)$, let us first consider the response of $x(t)$ when $u(t)$ is a "small tap" which can be represented by a Dirac delta function.
 
 :::{admonition} Definition (Dirac delta function)
 :class: definition
@@ -49,11 +49,11 @@ If $u(t) = \delta(t)$, then let $\tilde{x}(t)$ denote the output response of an 
 
 Now, consider what the response would be to the following scenarios:
 
-- Doubled the magnitude of the input $u(t) = 2 \delta(t)$. By to the homogeneity property, the output would double, $2\tilde{x}(t)$.
-- Delayed the input by $\tau$, $u(t) = \delta(t - \tau)$. By the time-invariance property, the output would be delayed by $\tau$, $\tilde{x}(t - \tau)$.
-- Two taps at $t=0$ and $t=\tau$ were provided, $u(t) = \delta(t) + \delta(t - \tau)$. By the superposition property, the output would be $\tilde{x}(t) + \tilde{x}(t - \tau)$.
+- The magnitude of the input $u(t) = 2 \delta(t)$ is doubled. By the homogeneity property, the output would also double, $2\tilde{x}(t)$.
+- The input is delayed by $\tau$, $u(t) = \delta(t - \tau)$. By the time-invariance property, the output would also be delayed by $\tau$, $\tilde{x}(t - \tau)$.
+- The input is two "taps" at $t=0$ and $t=\tau$ were provided, $u(t) = \delta(t) + \delta(t - \tau)$. By the superposition property, the output would be $\tilde{x}(t) + \tilde{x}(t - \tau)$.
 
-Given this, now consider what would happen if we the input was $N$ number of impulses with various magnitudes $u_k$ and at different times $\tau_k$.
+Given this, now consider what would happen if the input was $N$ number of impulses with various magnitudes $u_k$ and at different times $\tau_k$.
 
 $$ u(t) = \sum_{k=0}^N u_k \delta(t - \tau_k) $$
 
@@ -61,7 +61,7 @@ Given the LTI properties, the output would be,
 
 $$ x(t) = \sum_{k=0}^N u_k \tilde{x}(t - \tau_k) $$
 
-Now, if instead of summation, let us consider an integral. Intuitively, we can represent a smooth input signal $u(t)$ as the sum of many many many impulses of varying magnitudes all stacked up together.
+As we increase the number of impulses and decrease the distance between them, our summation becomes an integral. Intuitively, we can represent a smooth input signal $u(t)$ as the sum of many many many impulses of varying magnitudes all stacked up together.
 
 $$u(t) = \int_0^t u(\tau) \delta(t-\tau) d\tau$$
 
