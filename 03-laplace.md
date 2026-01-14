@@ -40,7 +40,7 @@ where $F(s) = \mathcal{L}\{f(t)\}$, $G(s) = \mathcal{L}\{g(t)\}$.
 :::
 
 This means that taking the Laplace transform of a convolution in time, is just equivalent to *multiplying* their Laplace transform! We go from solving nasty integrals to just plain old simple algebraic manipulation!
-Ok, but after taking the Laplace transform and performing some algebraic manipulation, we need to perform the inverse Laplace transform to return back to the time domain. But this last step, we can use the Laplace tables to help us with it.
+Ok, but after taking the Laplace transform and performing some algebraic manipulation, we need to perform the inverse Laplace transform to return back to the time domain. We can again use the Laplace tables to complete this step.
 
 Conceptually, we take a ODE problem defined in the time domain. Computing the output response $x(t)$ given an input $u(t)$ is tricky because of the convolution integral. Instead we take the Laplace transform and jump to the $s$-domain and work with quantities $X(s)$ and $U(s)$. The convolution becomes a multiplication and we perform some algebraic manipulation to "massage the problem" until we are ready to return back to the time domain by taking the inverse Laplace transform of $X(s)$ to end up with $x(t)$, the quantity we want in the first place. A diagram illustrating these ideas is shown below.
 
