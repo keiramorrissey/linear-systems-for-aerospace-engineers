@@ -71,7 +71,7 @@ $ \implies G(s) = \dfrac{X(s)}{U(s)} = \dfrac{1}{s^{2} + 4s + 5} $
 ## The characteristic equation
 
 It turns out we can characterize salient properties of LTI systems just by looking at the transfer function of the system. Specifically, by looking at the **denominator** of the transfer function.
-Notice that in essentially all of the examples involving inverse Laplace transfers, the answer is consists of exponential or sin/cosine terms, and the exponent or angular frequency depends on the coefficients in the denominator. While values in the numerator affected the coefficients in front of the exponential and sin/cosine terms.
+Notice that in essentially all of the examples involving inverse Laplace transfers, the answer consists of exponential or sine/cosine terms, and the exponent or angular frequency depends on the coefficients in the denominator, while values in the numerator affect the coefficients in front of the exponential and sine/cosine terms.
 
 
 :::{admonition} Definition (Characteristic equation)
@@ -81,7 +81,7 @@ Given a transfer function $G(s) = \frac{N(s)}{D(s)}$, the denominator $D(s)$ of 
 
 ### Standard second order system
 
-While a transfer function can take of many different forms, for a special class of transfer function, we can very easily interpret the system properties.
+While a transfer function can take many different forms, for a special class of transfer function, we can very easily interpret the system properties.
 
 To begin, let us consider the following spring-mass-damper system. We have a mass attached to a fixed wall by a linear spring and damper. Let $x$ describe the horizonal displacement of the mass from some equilibrium position, and suppose there is a force $u(t)$ being applied to the mass in the positive $x$ direction. While many things in real life are not quite literally a mass with a spring and damper attached, we can in fact model many mechanical systems as masses subject to some restorative and dissipative forces.
 
@@ -112,9 +112,11 @@ This analysis shows that the inertial, restorative, and dissipative properties o
 
 - If $\zeta > 1$, the system is **overdamped**, i.e. there are no residual oscillations in the system response.
 
-- If $\zeta = 1$, the system is **critically damped**. There is the the perfect balance between the restorative and dissipative forces.
+- If $\zeta = 1$, the system is **critically damped**. There is a perfect balance between the restorative and dissipative forces.
 
 - If $0 < \zeta < 1$, the system is **underdamped**. There is not enough damping to prevent oscillations from occuring.
+
+- If $\zeta = 0$, the system is not damped. Energy is not being added or removed from the system. The response amplitude remains constant.
 
 - If $\zeta < 0 $, energy is being added to the system, its response will grow exponentially.
 
